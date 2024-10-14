@@ -1,0 +1,13 @@
+.input-component {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.input-description {
+    font-size: .75rem;
+}
+
+.input-field {
+    width: 100%;
+}
