@@ -2,17 +2,20 @@ const default_url = "http://localhost:3001/api";
 
 const ApiService = {
     get: async (resource) => {
-        const response = await fetch(`${default_url}/${resource}`);
+        const api_response = await fetch(`${default_url}/${resource}`);
 
-        console.log(`POST: ${response.status}, ${response.statusText}`);
+        console.log(`POST: ${api_response.status}, ${api_response.statusText}`);
 
-        if (!response.ok) return;
+        const response = { code: api_response.status, data: null };
+
+        if (api_response.ok)
+            response.data = await api_response.json();
         
-        return await response.json();
+        return response;
     },
 
     post: async (resource, data) => {
-        const response = await fetch(`${default_url}/${resource}`, {
+        const api_response = await fetch(`${default_url}/${resource}`, {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
@@ -20,11 +23,14 @@ const ApiService = {
             },
         });
 
-        console.log(`POST: ${response.status}, ${response.statusText}`);
+        console.log(`POST: ${api_response.status}, ${api_response.statusText}`);
 
-        if (!response.ok) return;
+        const response = { code: api_response.status, data: null };
+
+        if (api_response.ok)
+            response.data = await api_response.json();
         
-        return await response.json();
+        return response;
     },
 }
 

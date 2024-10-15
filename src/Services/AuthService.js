@@ -20,7 +20,7 @@ const AuthService = {
         };
 
         const user = await ApiService.post("auth/login", creds);
-        
+
         return user;
     }
 }
