@@ -1,19 +1,22 @@
-import { useContext, useState } from "react";
+/* Functions */
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import InputComponent from "../Components/InputComponent";
-import { UrlContext } from "../Contexts/UrlContext";
 
+/* Components */
+import InputComponent from "../Components/InputComponent";
+
+/* Services */
+import AuthService from "../Services/AuthService";
+
+/* Styles */
 import "./Login.css";
-import { login } from "../Services/Auth";
 
 function Login() {
     const [email, setEmail] = useState("");
     const [passwd, setPasswd] = useState("")
 
-    const url = useContext(UrlContext);
-
     const log = async () => {
-        const user = await login(url, email, passwd);
+        const user = await AuthService.login(email, passwd);
 
         console.log(user);
     }
