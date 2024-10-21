@@ -8,7 +8,7 @@ const AuthService = {
             password: passwd,
         };
 
-        const user = await ApiService.post("auth/register", creds);
+        const user = await ApiService.post("auth/register", creds, "application/json");
 
         return user;
     },
@@ -19,7 +19,7 @@ const AuthService = {
             password: passwd,
         };
 
-        const user = await ApiService.post("auth/login", creds);
+        const user = await ApiService.post("auth/login", creds, "application/json");
 
         return user;
     }
