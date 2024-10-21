@@ -50,7 +50,8 @@ function Register() {
     return (
         <>
             <div className="login-card">
-                {/* ACÁ VA EL ÍCONO DE LA APP */}
+                <img src="src/assets/logo.jpg" alt="logo" className="login-logo" />
+                <h1 className="title">FAKESTRAGRAM</h1>
                 <SimpleTextInputComponent description="Username" recoverInput={setUsername} />
                 <EmailInputComponent recoverInput={setEmail} />
                 <PasswordInputComponent recoverInput={setPasswd} validate={true} />
