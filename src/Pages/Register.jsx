@@ -3,7 +3,9 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 /* Components */
-import InputComponent from "../Components/InputComponent";
+import SimpleTextInputComponent from "../Components/SimpleTextInputComponent";
+import EmailInputComponent from "../Components/EmailInputComponent";
+import PasswordInputComponent from "../Components/PasswordInputComponent";
 
 /* Services */
 import AuthService from "../Services/AuthService";
@@ -18,15 +20,26 @@ function Register() {
     const [passwd, setPasswd] = useState("")
 
     // Mensaje de error
+    const [err_msg, setErrorMsg] = useState("")
     const [isHidden, setHidden] = useState(true);
 
     // Para redireccionar
     const navigate = useNavigate();
 
     const reg = async () => {
+        if (username === "" || email === "" || passwd === "") {
+            setErrorMsg("Fields can't be left empty.");
+            setHidden(false);
+            return;
+        }
+
+        setErrorMsg("");
+        setHidden(true);
+
         const user = await AuthService.register(username, email, passwd);
 
         if (user.code === 400) { // El usuario existe
+            setErrorMsg("User already exists.");
             setHidden(false);
         } else {
             setHidden(true);
@@ -38,11 +51,11 @@ function Register() {
         <>
             <div className="login-card">
                 {/* ACÁ VA EL ÍCONO DE LA APP */}
-                <InputComponent description={"Username"} recoverInput={setUsername} />
-                <InputComponent description={"Email"} recoverInput={setEmail} />
-                <InputComponent description={"Password"} recoverInput={setPasswd} />
+                <SimpleTextInputComponent description="Username" recoverInput={setUsername} />
+                <EmailInputComponent recoverInput={setEmail} />
+                <PasswordInputComponent recoverInput={setPasswd} validate={true} />
 
-                <p hidden={isHidden} className="little-text error">User already exists.</p>
+                <p hidden={isHidden} className="little-text error">{err_msg}</p>
 
                 <button className="button-register" onClick={reg}>Sign up</button>
                 <p className="little-text">Already have an account? <Link to={"/login"}>Log in</Link>.</p>
