@@ -9,7 +9,7 @@ import InputComponent from "../Components/InputComponent";
 import AuthService from "../Services/AuthService";
 
 /* Styles */
-import "./Login.css";
+import "../styles/Login-styles.css";
 import { SessionContext } from "../Contexts/SessionContext";
 
 function Login() {
@@ -41,18 +41,24 @@ function Login() {
     }
 
     return (
-        <>
-            <div className="login-card">
-                {/* ACÁ VA EL ÍCONO DE LA APP */}
-                <InputComponent description={"Email"} recoverInput={setEmail} />
-                <InputComponent description={"Password"} recoverInput={setPasswd} />
+      <>
+        <div className="login-card">
+          <img src="src/assets/logo.jpg" alt="logo" className="login-logo" />
+          <h1 className="title">FAKESTRAGRAM</h1>
+          <InputComponent description={"Email"} recoverInput={setEmail} />
+          <InputComponent description={"Password"} recoverInput={setPasswd} />
 
-                <p hidden={isHidden} className="little-text error">Invalid username or password.</p>
+          <p hidden={isHidden} className="little-text error">
+            Invalid username or password.
+          </p>
 
-                <button onClick={log}>Log in</button>
-                <p className="little-text">Don't have an account? Create one <Link to={"/register"}>here</Link>.</p>
-            </div>
-        </>
+          <button onClick={log}>Log in</button>
+          <p className="little-text">
+            Don't have an account? Create one <Link to={"/register"}>here</Link>
+            .
+          </p>
+        </div>
+      </>
     );
 }
 

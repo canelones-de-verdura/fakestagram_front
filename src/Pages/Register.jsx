@@ -9,7 +9,7 @@ import InputComponent from "../Components/InputComponent";
 import AuthService from "../Services/AuthService";
 
 /* Styles */
-import "./Login.css";
+import "../styles/Login-styles.css";
 
 function Register() {
     // Credenciales
