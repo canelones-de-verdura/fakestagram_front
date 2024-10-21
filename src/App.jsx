@@ -9,7 +9,7 @@ import Register from './Pages/Register'
 import { SessionContextManager } from './Contexts/SessionContext'
 
 /* Styles */
-import "./App.css"
+import "./styles/App.css"
 
 function App() {
 
