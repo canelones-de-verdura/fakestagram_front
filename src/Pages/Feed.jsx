@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
+import "../Pages/Feed.css";
 
-import AuthService from "../Services/AuthService";
+//import AuthService from "../Services/AuthService";
 
 const Feed = () => {
     const [imagenes, setImagenes] = useState([]); // Estado para almacenar las imagenes
@@ -8,7 +9,8 @@ const Feed = () => {
 
     return (
         <>
-            <div className="headerFeed">   
+            <div className="feedcontainer">   
+                <h2>Fakestagram</h2>
                 <div className="statusBar">
 
                 </div>
@@ -19,3 +21,5 @@ const Feed = () => {
         </>
     )
 }
+
+export default Feed;
