@@ -6,7 +6,7 @@ import Login from './Pages/Login'
 import Register from './Pages/Register'
 
 /* Contexts */
-import { UserContextManager } from './Contexts/UserContext'
+import { SessionContextManager } from './Contexts/SessionContext'
 
 /* Styles */
 import "./App.css"
@@ -15,12 +15,12 @@ function App() {
 
     return (
         <>
-            <UserContextManager>
+            <SessionContextManager>
                 <Routes>
                     <Route path={"/login"} element={<Login />} />
                     <Route path={"/register"} element={<Register />} />
                 </Routes>
-            </UserContextManager>
+            </SessionContextManager>
         </>
     )
 }

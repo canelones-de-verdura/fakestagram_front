@@ -1,6 +1,6 @@
 /* Functions */
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 /* Components */
 import InputComponent from "../Components/InputComponent";
@@ -20,16 +20,17 @@ function Register() {
     // Mensaje de error
     const [isHidden, setHidden] = useState(true);
 
+    // Para redireccionar
+    const navigate = useNavigate();
+
     const reg = async () => {
         const user = await AuthService.register(username, email, passwd);
 
         if (user.code === 400) { // El usuario existe
             setHidden(false);
         } else {
-            // TODO
-            // Manejar la lógica de la sesión, redirección, etc.
             setHidden(true);
-            console.log(user.data);
+            navigate("/login");
         }
     }
 
