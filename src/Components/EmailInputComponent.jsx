@@ -35,7 +35,7 @@ function EmailInputComponent({ description, placeholder, recoverInput }) {
                 placeholder={placeholder}
                 handleChange={handleChange}
                 min_length={3}
-                max_length={30}
+                max_length={50}
                 is_required={true}
             />
 
