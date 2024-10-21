@@ -42,6 +42,6 @@ const ApiService = {
 
         return response;
     },
-}
+};
 
 export default ApiService;
