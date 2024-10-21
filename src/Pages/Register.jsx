@@ -11,7 +11,7 @@ import PasswordInputComponent from "../Components/PasswordInputComponent";
 import AuthService from "../Services/AuthService";
 
 /* Styles */
-import "./Login.css";
+import "../styles/Login-styles.css";
 
 function Register() {
     // Credenciales
@@ -57,7 +57,7 @@ function Register() {
 
                 <p hidden={isHidden} className="little-text error">{err_msg}</p>
 
-                <button onClick={reg}>Sign up</button>
+                <button className="button-register" onClick={reg}>Sign up</button>
                 <p className="little-text">Already have an account? <Link to={"/login"}>Log in</Link>.</p>
             </div>
         </>

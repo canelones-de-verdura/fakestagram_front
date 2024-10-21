@@ -10,7 +10,7 @@ import PasswordInputComponent from "../Components/PasswordInputComponent";
 import AuthService from "../Services/AuthService";
 
 /* Styles */
-import "./Login.css";
+import "../styles/Login-styles.css";
 import { SessionContext } from "../Contexts/SessionContext";
 
 function Login() {
@@ -55,13 +55,14 @@ function Login() {
     return (
         <>
             <div className="login-card">
-                {/* ACÁ VA EL ÍCONO DE LA APP */}
+                <img src="src/assets/logo.jpg" alt="logo" className="login-logo" />
+                <h1 className="title">FAKESTRAGRAM</h1>
                 <EmailInputComponent recoverInput={setEmail} />
                 <PasswordInputComponent recoverInput={setPasswd} validate={false} />
 
                 <p hidden={isHidden} className="little-text error">{err_msg}</p>
 
-                <button onClick={log}>Log in</button>
+                <button className="button-login" onClick={log}>Log in</button>
                 <p className="little-text">Don't have an account? Create one <Link to={"/register"}>here</Link>.</p>
             </div>
         </>
