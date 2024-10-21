@@ -3,7 +3,9 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 /* Components */
-import InputComponent from "../Components/InputComponent";
+import SimpleTextInputComponent from "../Components/SimpleTextInputComponent";
+import EmailInputComponent from "../Components/EmailInputComponent";
+import PasswordInputComponent from "../Components/PasswordInputComponent";
 
 /* Services */
 import AuthService from "../Services/AuthService";
@@ -38,9 +40,9 @@ function Register() {
         <>
             <div className="login-card">
                 {/* ACÁ VA EL ÍCONO DE LA APP */}
-                <InputComponent description={"Username"} recoverInput={setUsername} />
-                <InputComponent description={"Email"} recoverInput={setEmail} />
-                <InputComponent description={"Password"} recoverInput={setPasswd} />
+                <SimpleTextInputComponent description="Username" recoverInput={setUsername} />
+                <EmailInputComponent recoverInput={setEmail} />
+                <PasswordInputComponent recoverInput={setPasswd} />
 
                 <p hidden={isHidden} className="little-text error">User already exists.</p>
 

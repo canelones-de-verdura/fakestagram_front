@@ -3,7 +3,8 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 /* Components */
-import InputComponent from "../Components/InputComponent";
+import EmailInputComponent from "../Components/EmailInputComponent";
+import PasswordInputComponent from "../Components/PasswordInputComponent";
 
 /* Services */
 import AuthService from "../Services/AuthService";
@@ -27,6 +28,9 @@ function Login() {
     const navigate = useNavigate();
 
     const log = async () => {
+        if (email === "" || passwd === "")
+            return;
+
         const user = await AuthService.login(email, passwd);
 
         if (user.code === 401) { // Falló el login
@@ -44,8 +48,8 @@ function Login() {
         <>
             <div className="login-card">
                 {/* ACÁ VA EL ÍCONO DE LA APP */}
-                <InputComponent description={"Email"} recoverInput={setEmail} />
-                <InputComponent description={"Password"} recoverInput={setPasswd} />
+                <EmailInputComponent recoverInput={setEmail} />
+                <PasswordInputComponent recoverInput={setPasswd} />
 
                 <p hidden={isHidden} className="little-text error">Invalid username or password.</p>
 
