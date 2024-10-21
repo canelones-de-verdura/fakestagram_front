@@ -52,7 +52,7 @@ function Login() {
             Invalid username or password.
           </p>
 
-          <button onClick={log}>Log in</button>
+          <button className="button-login" onClick={log}>Log in</button>
           <p className="little-text">
             Don't have an account? Create one <Link to={"/register"}>here</Link>
             .
