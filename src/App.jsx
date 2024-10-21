@@ -10,7 +10,7 @@ import Feed from './Pages/Feed'
 import { SessionContextManager } from './Contexts/SessionContext'
 
 /* Styles */
-import "./App.css"
+import "./styles/App.css"
 
 function App() {
 
