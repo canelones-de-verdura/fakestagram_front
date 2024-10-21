@@ -58,3 +58,15 @@
 .little-text{
     margin-top: 20px;
 }
+
+.button-register{
+    width: 100%;
+  margin-top: 25px;
+  background: #6a11cb;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
