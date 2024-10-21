@@ -1,12 +1,26 @@
 import { useEffect, useState } from "react";
 import InputComponent from "./InputComponent";
 
-function PasswordInputComponent({ description, placeholder, recoverInput }) {
+function PasswordInputComponent({ description, placeholder, recoverInput, validate }) {
+    // Mensaje de error en la tarjeta
+    const [isHidden, setHidden] = useState(true);
+
+    // Descripción
+    const [desc, setDesc] = useState("Password");
+
     const handleChange = (event) => {
-        recoverInput(event.target.value);
+        const input = event.target.value;
+        recoverInput(input);
+        if (validate) validatePassword(input);
     };
 
-    const [desc, setDesc] = useState("Password");
+    const validatePassword = (input) => {
+        if (input.length < 8 && input !== "")
+            setHidden(false);
+        else
+            setHidden(true);
+    }
+
     useEffect(() => {
         if (description !== undefined)
             setDesc(description);
@@ -23,6 +37,8 @@ function PasswordInputComponent({ description, placeholder, recoverInput }) {
                 max_length={30}
                 is_required={true}
             />
+
+            <p hidden={isHidden} className="little-text error">Password must be 8 characters or longer.</p>
         </div>
     );
 };

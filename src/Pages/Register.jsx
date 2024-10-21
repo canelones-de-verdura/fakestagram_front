@@ -20,15 +20,26 @@ function Register() {
     const [passwd, setPasswd] = useState("")
 
     // Mensaje de error
+    const [err_msg, setErrorMsg] = useState("")
     const [isHidden, setHidden] = useState(true);
 
     // Para redireccionar
     const navigate = useNavigate();
 
     const reg = async () => {
+        if (username === "" || email === "" || passwd === "") {
+            setErrorMsg("Fields can't be left empty.");
+            setHidden(false);
+            return;
+        }
+
+        setErrorMsg("");
+        setHidden(true);
+
         const user = await AuthService.register(username, email, passwd);
 
         if (user.code === 400) { // El usuario existe
+            setErrorMsg("User already exists.");
             setHidden(false);
         } else {
             setHidden(true);
@@ -42,9 +53,9 @@ function Register() {
                 {/* ACÁ VA EL ÍCONO DE LA APP */}
                 <SimpleTextInputComponent description="Username" recoverInput={setUsername} />
                 <EmailInputComponent recoverInput={setEmail} />
-                <PasswordInputComponent recoverInput={setPasswd} />
+                <PasswordInputComponent recoverInput={setPasswd} validate={true} />
 
-                <p hidden={isHidden} className="little-text error">User already exists.</p>
+                <p hidden={isHidden} className="little-text error">{err_msg}</p>
 
                 <button onClick={reg}>Sign up</button>
                 <p className="little-text">Already have an account? <Link to={"/login"}>Log in</Link>.</p>

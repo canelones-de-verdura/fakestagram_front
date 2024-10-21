@@ -2,11 +2,26 @@ import { useEffect, useState } from "react";
 import InputComponent from "./InputComponent";
 
 function EmailInputComponent({ description, placeholder, recoverInput }) {
+    // Mensaje de error en la tarjeta
+    const [isHidden, setHidden] = useState(true);
+
+    // Descripción
+    const [desc, setDesc] = useState("Email");
+
     const handleChange = (event) => {
-        recoverInput(event.target.value);
+        const input = event.target.value;
+        recoverInput(input);
+        validateEmail(input);
     };
 
-    const [desc, setDesc] = useState("Email");
+    const validateEmail = (input) => {
+        const regex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
+        if (!regex.test(input) && input !== "")
+            setHidden(false);
+        else
+            setHidden(true);
+    }
+
     useEffect(() => {
         if (description !== undefined)
             setDesc(description);
@@ -23,6 +38,8 @@ function EmailInputComponent({ description, placeholder, recoverInput }) {
                 max_length={30}
                 is_required={true}
             />
+
+            <p hidden={isHidden} className="little-text error">Email might not be valid.</p>
         </div>
     );
 };
