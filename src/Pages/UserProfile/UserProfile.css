@@ -1,0 +1,87 @@
+/* UserProfile.css */
+
+
+  
+
+  @font-face {
+    font-family: 'Inter';
+    src: url('../../Fonts/Inter-Italic-VariableFont_opsz\,wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+  }
+  
+
+.profile-container {
+    max-width: 935px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 30px;
+    object-fit: cover;
+  }
+  
+  .profile-info {
+    flex-grow: 1;
+  }
+  
+  .profile-username {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-username h2 {
+    margin-right: 20px;
+    font-size: 28px;
+    font-weight: 400;
+  }
+  
+  .edit-profile-btn {
+    padding: 5px 10px;
+    background-color: #fafafa;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .profile-stats {
+    display: flex;
+    gap: 20px;
+    margin: 10px 0;
+  }
+  
+  .profile-stats p {
+    font-size: 16px;
+  }
+  
+  .profile-bio {
+    font-size: 14px;
+  }
+  
+  .profile-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  
+  .gallery-item {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .namee{
+    font-weight: bold;
+    font-family: 'Inter';
+  }
