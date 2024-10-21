@@ -10,7 +10,7 @@ import UserProfile from './Pages/UserProfile/UserProfile'
 import { SessionContextManager } from './Contexts/SessionContext'
 
 /* Styles */
-import "./App.css"
+import "./styles/App.css"
 
 function App() {
     //Usuario de Prueba para el componente UserProfile
