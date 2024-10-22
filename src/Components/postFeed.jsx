@@ -1,21 +1,29 @@
 import React from "react"
 import "./postFeed.css";
 
-const postFeed = ({nomUsuario, profileImg, img}) =>{
+const Post = ({ nomUsuario, profileImg, img, likes }) => {
 
     return (
-        <div className="postContainer">   
-            <div className="userInfo">   
-                <img src={profileImg} alt={`${nomUsuario} avatar`}/>
-                <p>{nomUsuario}</p>
-                <button>•••</button>
+        <>
+            <div className="userInfo">
+                <div className="nomImgContainer">
+                    <img src={profileImg} alt={`${nomUsuario} avatar`} />
+                    <p id="nomUsuario">{nomUsuario}</p>
+                </div>
+                <button id="optionsButton">...</button>
             </div>
             <div className="imgContainer">
-                <img src={img} alt={`${nomUsuario} imagen`} />           
+                <img id="imgPost" src={img} alt={`${nomUsuario} imagen`} />
             </div>
-            <div className="interactionConteiner">   
-                
+            <div className="interactionConteiner">
+                <span className="icon-heart">♡</span>
+                <span className="icon-comment">💬</span>
             </div>
-        </div>
+            <div className="detailsContainer">
+
+            </div>
+        </>
     )
 }
+
+export default Post;

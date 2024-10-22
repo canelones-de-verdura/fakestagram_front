@@ -1,48 +1,67 @@
-.feedcontainer {
-    width: 100%;
-    text-align: left;
-    padding: 10px; 
-    background-color: white;
-    margin: 10px 0 0 0;
-    position: absolute;
-    top: 0;
-    left: 0;
+
+/*COntenedor de todo el feed, donde aparecen los post, header, etc*/
+.feedContainer {
+  width: 100%;
+  max-width: 600px;
+  text-align: left;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  height: 100vh;
+  }
+
+.postContainer{
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
-    font-size: 24px;
-    font-family: 'Inter', sans-serif;
-    color: #333;
-    margin-top: 0; 
-    text-align: left;
+  font-size: 24px;
+  font-family: 'Inter', sans-serif;
+  color: #333;
+  margin-top: 0;
+  text-align: left;
 }
 
-:root{
-    background: white;
+:root {
+  background: white;
 }
 
-.header {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid lightgray;
-  }
-  
-  .app-name {
-    font-size: 24px;
-    font-weight: bold;
-    margin-right: 10px;
-  }
-  
-  .icons {
-    display: flex;
-    gap: 15px; /* Espacio entre los íconos */
-  }
-  
-  .icon {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-  }
-  
+.feedHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.feedHeader h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.feedHeader .iconos {
+  display: flex;
+  gap: 15px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+body {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 100%; /* Hace que el body ocupe el 100% de la altura de la pantalla */
+  margin: 0;
+  background-color: #f0f0f0; /* Color de fondo, opcional */
+}
+
+.feedHeader{
+  display: flex;
+  justify-content: space-between;
+}
