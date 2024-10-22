@@ -65,3 +65,7 @@ body {
   display: flex;
   justify-content: space-between;
 }
+
+#root{
+  padding: 0;
+}

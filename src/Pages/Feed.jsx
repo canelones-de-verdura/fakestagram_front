@@ -32,7 +32,8 @@ const Feed = () => {
 
                 </div>
                 <div className="postContainer">
-                    <Post nomUsuario="User" profileImg="https://images.unsplash.com/photo-1632932197818-6b131c21a961?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" img="https://s3-alpha-sig.figma.com/img/2a1e/79b4/d4d7dd5ed1da7361cee9f33fa2750926?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=AyOj28pIPibPW077E2XlvfpN1puPW6ObFD-k1PVej9bbCk0gnMzw66JAHo4vSbEK4rebK8~DxUBZonNNB~QQDpGXIUgpwSOBaFXAWN5HKRYjF4dISin7OUgPzX533b4155dTeBxRy~D3AQ9wYcYF1iegMyA80aHHbi1HytCBraSv0NA86B4zsHZzAdJNTOZy-PU3sETa2rDZr7vgrsY5uUkFpaAur4d5Ra4-iaTWXFeuRfRLx2L~X-VxMNWNdEml8BU8ALAr030fsp7EHGVFR7N-zxw6LZsMHoYsRMm6wVr9p7VytJEa7iaLmMQPuYppDJ3E-tCdJ4CfFS7Rzbz5Uw__"/>
+                    <Post nomUsuario="User" profileImg="https://images.unsplash.com/photo-1632932197818-6b131c21a961?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                    img="https://s3-alpha-sig.figma.com/img/2a1e/79b4/d4d7dd5ed1da7361cee9f33fa2750926?Expires=1730678400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=AyOj28pIPibPW077E2XlvfpN1puPW6ObFD-k1PVej9bbCk0gnMzw66JAHo4vSbEK4rebK8~DxUBZonNNB~QQDpGXIUgpwSOBaFXAWN5HKRYjF4dISin7OUgPzX533b4155dTeBxRy~D3AQ9wYcYF1iegMyA80aHHbi1HytCBraSv0NA86B4zsHZzAdJNTOZy-PU3sETa2rDZr7vgrsY5uUkFpaAur4d5Ra4-iaTWXFeuRfRLx2L~X-VxMNWNdEml8BU8ALAr030fsp7EHGVFR7N-zxw6LZsMHoYsRMm6wVr9p7VytJEa7iaLmMQPuYppDJ3E-tCdJ4CfFS7Rzbz5Uw__" description="foto blaco y negro"/>
                 </div>
             </div>
         </>

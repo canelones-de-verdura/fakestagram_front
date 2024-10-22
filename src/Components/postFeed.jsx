@@ -1,7 +1,7 @@
 import React from "react"
 import "./postFeed.css";
 
-const Post = ({ nomUsuario, profileImg, img, likes }) => {
+const Post = ({ nomUsuario, profileImg, img, likes, description }) => {
 
     return (
         <>
@@ -15,12 +15,18 @@ const Post = ({ nomUsuario, profileImg, img, likes }) => {
             <div className="imgContainer">
                 <img id="imgPost" src={img} alt={`${nomUsuario} imagen`} />
             </div>
-            <div className="interactionConteiner">
-                <span className="icon-heart">♡</span>
-                <span className="icon-comment">💬</span>
+            <div className="interactionContainer">
+                <span className="detailsItems">❤️</span>
+                <span className="detailsItems">💬</span>
             </div>
             <div className="detailsContainer">
-
+                <div className="likes">
+                    {likes}
+                </div>
+                <div className="descriptionContainer">
+                    <p id="nomUsuario">{nomUsuario}</p>
+                    <p id="description">{description}</p>
+                </div>
             </div>
         </>
     )
