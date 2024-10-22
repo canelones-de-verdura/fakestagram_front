@@ -3,9 +3,10 @@
     text-align: left;
     padding: 10px; 
     background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    box-sizing: border-box;
-    margin: 0;
+    margin: 10px 0 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 h2 {
@@ -14,5 +15,34 @@ h2 {
     color: #333;
     margin-top: 0; 
     text-align: left;
-   
 }
+
+:root{
+    background: white;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+  }
+  
+  .app-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .icons {
+    display: flex;
+    gap: 15px; /* Espacio entre los íconos */
+  }
+  
+  .icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+  
