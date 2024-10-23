@@ -1,21 +1,93 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-image: url("../assets/fonddo.jpg");
+  background-size: cover;
+  border-radius: 15px;
+}
+:root {
+  background-image: url("../assets/descarga.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
+}
 .login-card {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-
-    width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 300px;
 }
 
 .little-text {
-    font-size: .75rem;
+  font-size: 0.75rem;
+}
+.here,
+.loggin {
+  color: #134e4e;
 }
 
 .error {
-    color: red;
-    align-self: flex-start;
+  color: red;
+  align-self: flex-start;
 }
 
-button {
-    width: 100%;
-    margin-top: 25px;
+.button-login {
+  width: 100%;
+  margin-top: 25px;
+  background: #134e4e;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.login-logo {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border-radius: 34px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.login-logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.little-text {
+  margin-top: 20px;
+}
+
+.button-register {
+  width: 100%;
+  margin-top: 25px;
+  background: #134e4e;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.button-register:hover {
+  background: #134e4eaa;
+  filter: drop-shadow(0 0 2em #134e4e);
+}
+
+.button-login:hover {
+  background: #134e4eaa;
+  filter: drop-shadow(0 0 2em #134e4e);
 }

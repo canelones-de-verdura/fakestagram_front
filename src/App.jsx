@@ -12,7 +12,6 @@ import { SessionContextManager } from './Contexts/SessionContext'
 import "./App.css"
 
 function App() {
-
     return (
         <>
             <SessionContextManager>
