@@ -57,7 +57,7 @@ function Login() {
     return (
         <>
             <div className="login-card">
-                <img src="src/assets/logo.jpg" alt="logo" className="login-logo" />
+                <img src="src/Assets/logo.jpg" alt="logo" className="login-logo" />
                 <h1 className="title">FAKESTRAGRAM</h1>
                 <EmailInputComponent recoverInput={setEmail} />
                 <PasswordInputComponent recoverInput={setPasswd} validate={false} />
