@@ -69,3 +69,12 @@ body {
 #root{
   padding: 0;
 }
+
+.batteryImage {
+  width: 100%; /* Cambia este valor para ajustar el tamaño que prefieras */
+  height: auto; /* Mantiene la proporción de la imagen */
+  margin: 0px; /* Añade un pequeño margen si es necesario */
+  display: flex;
+  justify-content: right;
+  max-width: 600px;
+}
