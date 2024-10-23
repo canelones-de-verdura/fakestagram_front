@@ -59,7 +59,7 @@ function Register() {
                 <p hidden={isHidden} className="little-text error">{err_msg}</p>
 
                 <button className="button-register" onClick={reg}>Sign up</button>
-                <p className="little-text">Already have an account? <Link to={"/login"}>Log in</Link>.</p>
+                <p className="little-text">Already have an account? <Link to={"/login"} className="loggin">Log in</Link>.</p>
             </div>
         </>
     );

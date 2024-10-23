@@ -65,7 +65,7 @@ function Login() {
                 <p hidden={isHidden} className="little-text error">{err_msg}</p>
 
                 <button className="button-login" onClick={log}>Log in</button>
-                <p className="little-text">Don't have an account? Create one <Link to={"/register"}>here</Link>.</p>
+                <p className="little-text">Don't have an account? Create one <Link to={"/register"} className="here">here</Link>.</p>
             </div>
         </>
     );
