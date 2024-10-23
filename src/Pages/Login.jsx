@@ -9,9 +9,11 @@ import PasswordInputComponent from "../Components/PasswordInputComponent";
 /* Services */
 import AuthService from "../Services/AuthService";
 
-/* Styles */
-import "../styles/Login-styles.css";
+/* Context */
 import { SessionContext } from "../Contexts/SessionContext";
+
+/* Styles */
+import "./Login.css";
 
 function Login() {
     // Credenciales

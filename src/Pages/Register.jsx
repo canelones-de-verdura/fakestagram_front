@@ -11,7 +11,7 @@ import PasswordInputComponent from "../Components/PasswordInputComponent";
 import AuthService from "../Services/AuthService";
 
 /* Styles */
-import "../styles/Login-styles.css";
+import "./Login.css";
 
 function Register() {
     // Credenciales
