@@ -1,16 +1,22 @@
-
-/*COntenedor de todo el feed, donde aparecen los post, header, etc*/
+/* Contenedor de todo el feed, donde aparecen los post, header, etc */
 .feedContainer {
+  position: relative;
+  margin: 0 auto;
+  /* Centrando el contenedor */
   width: 100%;
   max-width: 600px;
   text-align: left;
   background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  height: 100vh;
-  }
+  min-height: 100vh; /* Cambia de height a min-height para permitir scroll */
+}
 
-.postContainer{
+#root {
+  padding: 0;
+}
+
+.postContainer {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -31,7 +37,7 @@ h2 {
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  border-bottom: 1px solid #ddd;
+
 }
 
 .feedHeader h2 {
@@ -53,28 +59,52 @@ h2 {
 }
 
 body {
-  display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  height: 100%; /* Hace que el body ocupe el 100% de la altura de la pantalla */
   margin: 0;
-  background-color: #f0f0f0; /* Color de fondo, opcional */
-}
-
-.feedHeader{
-  display: flex;
-  justify-content: space-between;
-}
-
-#root{
   padding: 0;
+  background-color: #f0f0f0; /* Color de fondo para todo el body */
 }
 
+/* Imagen de ejemplo */
 .batteryImage {
-  width: 100%; /* Cambia este valor para ajustar el tamaño que prefieras */
-  height: auto; /* Mantiene la proporción de la imagen */
-  margin: 0px; /* Añade un pequeño margen si es necesario */
+  width: 100%;
+  height: auto;
+  margin: 0px;
   display: flex;
   justify-content: right;
   max-width: 600px;
+}
+
+/* Contenedor de abajo */
+.navContainer {
+  height: 80px;
+  width: 100%;
+  box-sizing: border-box; /* Incluye el padding y bordes dentro del ancho */
+  border-top: 1px solid #ddd;
+  align-items: center;
+  padding: 32px 16px; /* Reduce el padding para evitar que sobresalga */
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  z-index: 1000;
+}
+
+.buttonNav {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.buttonNav img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 }
