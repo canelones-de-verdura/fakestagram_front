@@ -1,4 +1,4 @@
-#root {
+.login-root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -7,7 +7,7 @@
   background-size: cover;
   border-radius: 15px;
 }
-:root {
+body.login-background {
   background-image: url("../Assets/descarga.jpg");
   background-size: cover;
   background-repeat: no-repeat;

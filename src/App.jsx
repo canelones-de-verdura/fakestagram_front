@@ -1,5 +1,5 @@
 /* Functions */
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 
 /* Pages */
 import Login from './Pages/Login'
@@ -15,16 +15,17 @@ import "./App.css"
 
 function App() {
     return (
-        <>
-            <SessionContextManager>
-                <Routes>
-                    <Route path={"/login"} element={<Login />} />
-                    <Route path={"/register"} element={<Register />} />
-                    <Route path={"/feed"} element={<Feed />} />
-                </Routes>
-            </SessionContextManager>
-        </>
-    )
+      <>
+        <SessionContextManager>
+          <Routes>
+            <Route path="/" element={<Navigate to="/login" />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/feed" element={<Feed />} />
+          </Routes>
+        </SessionContextManager>
+      </>
+    );
 }
 
 export default App

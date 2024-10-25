@@ -1,5 +1,5 @@
 /* Functions */
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 /* Components */
@@ -50,9 +50,18 @@ function Login() {
             session.start_session(user.data);
 
             // Redireccionamos
-            navigate("/");
+            navigate("/feed");
         }
     }
+
+    useEffect(() => {
+        document.body.classList.add("login-background");
+        document.getElementById("root").classList.add("login-root");
+        return () => {
+            document.body.classList.remove("login-background");
+            document.getElementById("root").classList.remove("login-root");
+        };
+    }, []);
 
     return (
         <>

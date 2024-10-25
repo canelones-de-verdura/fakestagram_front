@@ -1,4 +1,14 @@
-/* Contenedor de todo el feed, donde aparecen los post, header, etc */
+
+body.feed-backround{
+  background-color: white;
+  color: black;
+}
+
+.feed-root{
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
 .feedContainer {
   position: relative;
   margin: 0 auto;
@@ -12,9 +22,6 @@
   min-height: 100vh; /* Cambia de height a min-height para permitir scroll */
 }
 
-#root {
-  padding: 0;
-}
 
 .postContainer {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -26,10 +33,6 @@ h2 {
   color: #333;
   margin-top: 0;
   text-align: left;
-}
-
-:root {
-  background: white;
 }
 
 .feedHeader {
@@ -58,11 +61,7 @@ h2 {
   cursor: pointer;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #f0f0f0; /* Color de fondo para todo el body */
-}
+
 
 /* Imagen de ejemplo */
 .batteryImage {

@@ -1,5 +1,5 @@
 /* Functions */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 /* Components */
@@ -46,6 +46,14 @@ function Register() {
             navigate("/login");
         }
     }
+    useEffect(() => {
+      document.body.classList.add("login-background");
+      document.getElementById("root").classList.add("login-root");
+      return () => {
+        document.body.classList.remove("login-background");
+        document.getElementById("root").classList.remove("login-root");
+      };
+    }, []);
 
     return (
         <>
