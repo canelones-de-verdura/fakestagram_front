@@ -1,8 +1,6 @@
-import React from "react"
 import "./postFeed.css";
 
 const Post = ({ nomUsuario, profileImg, img, likes, description }) => {
-
     return (
         <>
             <div className="userInfo">
@@ -10,7 +8,11 @@ const Post = ({ nomUsuario, profileImg, img, likes, description }) => {
                     <img src={profileImg} alt={`${nomUsuario} avatar`} />
                     <p id="nomUsuario">{nomUsuario}</p>
                 </div>
-                <button id="optionsButton">...</button>
+                <button id="optionsButton">
+                    <span className="material-symbols-outlined">
+                        more_vert
+                    </span>
+                </button>
             </div>
             <div className="imgContainer">
                 <img id="imgPost" src={img} alt={`${nomUsuario} imagen`} />

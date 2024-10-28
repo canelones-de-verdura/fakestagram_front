@@ -1,4 +1,6 @@
-const default_url = "http://localhost:3001/api";
+import origin_url from "./Origin";
+
+const default_url = `${origin_url}/api`;
 
 const ApiService = {
     get: async (resource, token) => {

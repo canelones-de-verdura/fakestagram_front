@@ -1,5 +1,5 @@
 /* Functions */
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 /* Components */
@@ -8,9 +8,6 @@ import PasswordInputComponent from "../Components/PasswordInputComponent";
 
 /* Services */
 import AuthService from "../Services/AuthService";
-
-/* Context */
-import { SessionContext } from "../Contexts/SessionContext";
 
 /* Styles */
 import "./Login.css";
@@ -23,9 +20,6 @@ function Login() {
     // Mensaje de error en la tarjeta
     const [err_msg, setErrorMsg] = useState("")
     const [isHidden, setHidden] = useState(true);
-
-    // User
-    const session = useContext(SessionContext);
 
     // Para redireccionar
     const navigate = useNavigate();
@@ -47,7 +41,8 @@ function Login() {
             setHidden(false);
         } else {
             setHidden(true);
-            session.start_session(user.data);
+            localStorage.setItem("user", JSON.stringify(user.data));
+            //session.start_session(user.data);
 
             // Redireccionamos
             navigate("/feed");
