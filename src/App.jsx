@@ -4,7 +4,6 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 /* Pages */
 import Login from './Pages/Login'
 import Register from './Pages/Register'
-//import UserProfile from './Pages/UserProfile/UserProfile'
 import Feed from './Pages/Feed'
 
 /* Contexts */
