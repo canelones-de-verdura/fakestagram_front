@@ -4,11 +4,12 @@
   padding: 2rem;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-image: url("../assets/fonddo.jpg");
   background-size: cover;
   border-radius: 15px;
 }
-body.login-background {
-  background-image: url("../Assets/descarga.jpg");
+:root {
+  background-image: url("../assets/descarga.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

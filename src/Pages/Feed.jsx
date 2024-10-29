@@ -2,23 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./Feed.css";
 import Post from "../Components/postFeed";
 import { useNavigate } from "react-router-dom";
-//import AuthService from "../Services/AuthService";
 
 const Feed = () => {
   const [imagenes, setImagenes] = useState([]); // Estado para almacenar las imagenes
   const navigate = useNavigate();
-
-  /*
-    useEffect(() => {
-        const fetchImages = async () => {
-            const response = await fetch('http://localhost:3001/api/feed');
-            const data = await response.json();
-            setImagenes(data);
-        };
-    
-        fetchImages();
-    }, []);
-    */
 
   const handlerProfile = () => {
     navigate("/profile");
@@ -33,6 +20,20 @@ const Feed = () => {
       document.getElementById("root").classList.remove("feed-root");
     };
   }, []);
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0]; // Obtener el primer archivo seleccionado
+    const reader = new FileReader(); // Crear una instancia de FileReader
+  
+    reader.onload = function () {
+      // Cuando la imagen se haya cargado
+      const base64Image = reader.result; // Convertir la imagen a Base64
+      setImagenes((prevImagenes) => [...prevImagenes, base64Image]); // Guardar la imagen
+    };
+  
+    reader.readAsDataURL(file); // Leer el archivo como una URL en formato Base64
+  };
+ 
 
   return (  
     <>
