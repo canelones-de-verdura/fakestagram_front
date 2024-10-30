@@ -14,6 +14,9 @@ const Feed = () => {
 
   // Imágenes del feed
   const [posts, setPosts] = useState([]); // Estado para almacenar las imagenes
+  const [isModalOpen, setIsModalOpen] = useState(false); // Estado para controlar el modal
+  const [newImage, setNewImage] = useState(null); // Estado para la imagen
+  const [caption, setCaption] = useState(""); // Estado para el comentario
 
   useEffect(() => {
       const fetchImages = async () => {
@@ -31,6 +34,29 @@ const Feed = () => {
   };
 
 
+
+    const handleAddBoxClick = () => {
+        setIsModalOpen(true); // Abre el modal
+    };
+
+    const handleImageChange = (e) => {
+        setNewImage(e.target.files[0]); // Guarda la imagen seleccionada
+    };
+
+    const handleCaptionChange = (e) => {
+        setCaption(e.target.value); // Guarda el comentario
+    };
+
+    const handleUploadPost = async () => {
+        if (newImage && caption) {
+            const res = await PostService.upload_post(newImage, caption, user.token);
+            if (res.code === 200) {
+                setPosts([...posts, res.data]); // Agrega el nuevo post al feed
+                setIsModalOpen(false); // Cierra el modal
+            }
+        }
+    };
+
     useEffect(() => {
         document.body.classList.add("feed-background");
         document.getElementById("root").classList.add("feed-root");
@@ -47,14 +73,19 @@ const Feed = () => {
                 <div className="feedHeader">
                     <h2>Fakestagram</h2>
                     <div className="iconos">
-                        <span className="material-symbols-outlined">
+                    <button className="icon-button" onClick={() => {/* Acción para el botón favorite */}}>
+                        <span className="material-symbols-outlined" style={{ color: 'initial' }}>
                             favorite
                         </span>
-                        <span className="material-symbols-outlined">
+                    </button>
+                    <button className="icon-button" onClick={handleAddBoxClick}>
+                        <span className="material-symbols-outlined" onClick={handleAddBoxClick} style={{ color: 'initial' }}>
                             add_box
                         </span>
+                    </button>
                     </div>
                 </div>
+
                 <div className="postContainer">
                     {posts.map((post, key) => {
                         return <Post
@@ -80,6 +111,23 @@ const Feed = () => {
                     </button>
                 </div>
             </div>
+
+             {/* Modal para subir nueva imagen */}
+             {isModalOpen && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <h3>Subir nueva imagen</h3>
+                        <input type="file" onChange={handleImageChange} accept="image/*" />
+                        <textarea
+                            placeholder="Agrega un comentario..."
+                            value={caption}
+                            onChange={handleCaptionChange}
+                        />
+                        <button onClick={handleUploadPost}>Subir</button>
+                        <button onClick={() => setIsModalOpen(false)}>Cancelar</button>
+                    </div>
+                </div>
+            )}
         </>
     );
 };
