@@ -1,4 +1,4 @@
-#root {
+/*#root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -7,7 +7,7 @@
 :root{
     background: linear-gradient(to right, #6a11cb, #2575fc);
     color: white;
-}
+}*/
 .login-card {
   display: flex;
   flex-direction: column;
