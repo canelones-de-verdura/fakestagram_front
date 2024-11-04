@@ -61,6 +61,11 @@ const Feed = () => {
                     </div>
                     <div className="postContainer">
                         {posts.map((post, key) => {
+
+                            /////////////////
+                            console.log(post)
+                            /////////////////
+
                             return (
                                 <Post
                                     key={key}
