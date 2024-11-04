@@ -13,6 +13,7 @@ body.login-background {
   background-repeat: no-repeat;
   background-position: center;
   color: white;
+  display: flex;
 }
 .login-card {
   display: flex;
@@ -90,3 +91,4 @@ body.login-background {
   background: #134e4eaa;
   filter: drop-shadow(0 0 2em #134e4e);
 }
+
