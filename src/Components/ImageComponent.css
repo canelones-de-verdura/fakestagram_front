@@ -1,0 +1,12 @@
+.imgComponent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.imgInComponent {
+    max-width: 425px;
+    height: 350px;
+    object-fit: contain;
+}

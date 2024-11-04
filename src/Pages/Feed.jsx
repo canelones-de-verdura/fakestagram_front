@@ -4,6 +4,7 @@ import Post from "../Components/postFeed";
 import { useNavigate } from "react-router-dom";
 import PostService from "../Services/PostService";
 import origin_url from "../Services/Origin";
+import PostModal from "../Components/PostModal";
 
 const Feed = () => {
     // User
@@ -14,6 +15,9 @@ const Feed = () => {
 
     // Imágenes del feed
     const [posts, setPosts] = useState([]); // Estado para almacenar las imagenes
+
+    // Para abrir/cerrar los posts
+    const [open, setOpen] = useState(true);
 
     useEffect(() => {
         const fetchImages = async () => {
@@ -79,6 +83,7 @@ const Feed = () => {
                     </button>
                 </div>
             </div>
+            <PostModal open={open} setOpen={setOpen} />
         </>
     );
 };

@@ -1,3 +1,5 @@
+import ImageComponent from "./ImageComponent";
+
 import "./postFeed.css";
 
 const Post = ({ nomUsuario, profileImg, img, likes, description }) => {
@@ -15,11 +17,15 @@ const Post = ({ nomUsuario, profileImg, img, likes, description }) => {
                 </button>
             </div>
             <div className="imgContainer">
-                <img id="imgPost" src={img} alt={`${nomUsuario} imagen`} />
+                <ImageComponent image={img} alt_text={nomUsuario} />
             </div>
             <div className="interactionContainer">
-                <span className="detailsItems">❤️</span>
-                <span className="detailsItems">💬</span>
+                <span className="material-symbols-outlined detailsItems">
+                    favorite
+                </span>
+                <span className="material-symbols-outlined detailsItems">
+                    comment
+                </span>
             </div>
             <div className="detailsContainer">
                 <div className="likes">
