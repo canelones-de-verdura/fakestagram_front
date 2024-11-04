@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import PostService from "../Services/PostService";
 import origin_url from "../Services/Origin";
 import Sidebar from "../Components/SideBar";
+import PostModal from "../Components/PostModal";
 
 const Feed = () => {
   // User
@@ -16,9 +17,18 @@ const Feed = () => {
   // Imágenes del feed
   const [posts, setPosts] = useState([]); // Estado para almacenar las imagenes
 
+
   useEffect(() => {
     const fetchImages = async () => {
       const res = await PostService.get_feed(user.token); // Falta token
+
+    // Para abrir/cerrar los posts
+    const [open, setOpen] = useState(true);
+
+    useEffect(() => {
+        const fetchImages = async () => {
+            const res = await PostService.get_feed(user.token) // Falta token
+
 
       if (res.code === 200) setPosts(res.data);
     };
@@ -50,6 +60,7 @@ const Feed = () => {
               <span className="material-symbols-outlined">favorite</span>
               <span className="material-symbols-outlined">add_box</span>
             </div>
+
           </div>
           <div className="postContainer">
             {posts.map((post, key) => {
@@ -79,6 +90,11 @@ const Feed = () => {
       </div>
     </>
   );
+
+            <PostModal open={open} setOpen={setOpen} />
+        </>
+    );
+
 };
 
 export default Feed;
