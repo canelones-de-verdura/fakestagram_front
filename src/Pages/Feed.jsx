@@ -18,8 +18,9 @@ const Feed = () => {
     const [posts, setPosts] = useState([]); // Estado para almacenar las imagenes
 
 
-    // Para abrir/cerrar los posts
-    const [open, setOpen] = useState(true);
+    // Para abrir/cerrar los comentarios
+    const [open, setOpen] = useState(false);
+    const [openWith, setOpenWith] = useState({}); // objeto con id del post + array de ids de comentarios
 
 
     useEffect(() => {
@@ -57,26 +58,21 @@ const Feed = () => {
                             <span className="material-symbols-outlined">favorite</span>
                             <span className="material-symbols-outlined">add_box</span>
                         </div>
-
                     </div>
+
                     <div className="postContainer">
                         {posts.map((post, key) => {
-
-                            /////////////////
-                            console.log(post)
-                            /////////////////
-
                             return (
                                 <Post
                                     key={key}
-                                    nomUsuario={post.user.username}
-                                    profileImg={`${origin_url}/${post.user.profilePicture}`}
-                                    img={`${origin_url}/${post.imageUrl}`}
-                                    description={post.caption}
+                                    post={post}
+                                    modalSetOpen={setOpen}
+                                    commentsArray={setOpenWith}
                                 />
                             );
                         })}
                     </div>
+
                     <div className="navContainer">
                         <button className="buttonNav">
                             <span className="imgNav material-symbols-outlined">home</span>
@@ -90,7 +86,7 @@ const Feed = () => {
                     </div>
                 </div>
             </div>
-            <PostModal open={open} setOpen={setOpen} />
+            <PostModal open={open} setOpen={setOpen} comments={openWith} updateComments={setOpenWith}/>
         </>
     );
 
