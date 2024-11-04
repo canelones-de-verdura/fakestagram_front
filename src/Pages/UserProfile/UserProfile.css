@@ -53,6 +53,8 @@
     border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
   }
   
   .profile-stats {

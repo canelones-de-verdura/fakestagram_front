@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './UserProfile.css';
 import EditProfileModal from '../EditProfileModal/EditProfileModal';
+import AddImageModal from '../../EditProfileAddTaskModal/AddImageModal';
 
 const UserProfile = ({ user }) => {
   // Estados para el perfil
@@ -12,6 +13,8 @@ const UserProfile = ({ user }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userName, setUserName] = useState(user.userName);
 
+  const [isImageModalOpen, setIsImageModalOpen]=useState(false);
+
   // Función para manejar la edición del perfil
   const handleEditProfile = (updatedUser) => {
     setName(updatedUser.name);
@@ -19,6 +22,8 @@ const UserProfile = ({ user }) => {
     setUserName(updatedUser.userName);
     // Aca creo que se puede actualizar el backend
   };
+
+  
 
   return (
     <div className="profile-container">
@@ -29,6 +34,9 @@ const UserProfile = ({ user }) => {
             <h2>{userName}</h2>
             <button className="edit-profile-btn" onClick={() => setIsModalOpen(true)}>
               Edit Profile
+            </button>
+            <button className="edit-profile-btn" onClick={()=> setIsImageModalOpen(true)}>
+              Add Post
             </button>
           </div>
           <div className="profile-stats">
@@ -54,6 +62,10 @@ const UserProfile = ({ user }) => {
         user={{ name, bio, userName }} // Pasa el usuario actual (en realidad son los parametros que quiero cambiar del usuario)
         onSave={handleEditProfile} // Función para manejar la actualización
       />
+      /*Aca el Modal para la imagen*/
+      <AddImageModal isOpen={isImageModalOpen} onClose={()=>setIsImageModalOpen(false)}>
+
+      </AddImageModal>
     </div>
   );
 };
