@@ -37,7 +37,7 @@ h2 {
 
 .feedHeader {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 15px;
 
@@ -86,7 +86,6 @@ h2 {
   position: sticky;
   bottom: 0;
   background-color: white;
-  z-index: 1000;
 }
 
 .buttonNav {
