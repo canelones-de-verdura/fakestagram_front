@@ -3,6 +3,12 @@ import ImageComponent from "./ImageComponent";
 import "./postFeed.css";
 
 const Post = ({ nomUsuario, profileImg, img, likes, description }) => {
+
+    const likesCount = Array.isArray(likes) ? likes.length : 0;
+    const handlerLike = () => {
+
+    }
+
     return (
         <>
             <div className="userInfo">
@@ -20,17 +26,17 @@ const Post = ({ nomUsuario, profileImg, img, likes, description }) => {
                 <ImageComponent image={img} alt_text={nomUsuario} />
             </div>
             <div className="interactionContainer">
-                <span className="material-symbols-outlined detailsItems">
-                    favorite
-                </span>
+                <div className="likeContainer">
+                    <span className="material-symbols-outlined detailsItems" onClick={handlerLike}>
+                        favorite
+                    </span>
+                    <span className="likesCount">{likesCount}</span>
+                </div>
                 <span className="material-symbols-outlined detailsItems">
                     comment
                 </span>
             </div>
             <div className="detailsContainer">
-                <div className="likes">
-                    {likes}
-                </div>
                 <div className="descriptionContainer">
                     <p id="nomUsuario">{nomUsuario}</p>
                     <p id="description">{description}</p>

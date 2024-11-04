@@ -22,6 +22,7 @@ const Feed = () => {
     const [open, setOpen] = useState(true);
 
 
+
     useEffect(() => {
         const fetchImages = async () => {
             const res = await PostService.get_feed(user.token) // Falta token
@@ -61,7 +62,6 @@ const Feed = () => {
                     </div>
                     <div className="postContainer">
                         {posts.map((post, key) => {
-
                             /////////////////
                             console.log(post)
                             /////////////////
@@ -73,6 +73,7 @@ const Feed = () => {
                                     profileImg={`${origin_url}/${post.user.profilePicture}`}
                                     img={`${origin_url}/${post.imageUrl}`}
                                     description={post.caption}
+                                    likes={post.likes}
                                 />
                             );
                         })}
