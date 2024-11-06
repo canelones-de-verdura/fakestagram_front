@@ -5,7 +5,15 @@ import origin_url from "../Services/Origin";
 import "./postFeed.css";
 
 const Post = ({ post, modalSetOpen, commentsArray }) => {
-    const [currentPost, setCurrentPost] = useState(post)
+    const [currentPost] = useState(post);
+    const [liked, setLiked] = useState(false);
+    const [likesCount, setLikesCount] = useState(post.likes ? post.likes.length : 0); 
+    
+    const handlerLike = () => {
+        setLiked(!liked); 
+        setLikesCount((prevLikes) => liked ? prevLikes - 1 : prevLikes + 1);
+    };
+
 
     const openComments = () => {
         modalSetOpen(true)
@@ -29,9 +37,15 @@ const Post = ({ post, modalSetOpen, commentsArray }) => {
                 <ImageComponent image={`${origin_url}/${currentPost.imageUrl}`} alt_text={currentPost.user.userName} />
             </div>
             <div className="interactionContainer">
-                <span className="material-symbols-outlined detailsItems">
-                    favorite
-                </span>
+
+                <div className="likeContainer">
+                    <span className={`material-symbols-outlined detailsItems ${liked ? "liked" : ""}`} 
+                        onClick={handlerLike}
+                    >    favorite
+                    </span>
+                    <span className="likesCount">{likesCount}</span>
+                </div>
+
                 <span className="material-symbols-outlined detailsItems" onClick={openComments}>
                     comment
                 </span>

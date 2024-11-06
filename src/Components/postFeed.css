@@ -71,3 +71,10 @@
     font-weight: bold;
 }
 
+.liked {
+    color: red;
+}
+
+.detailsItems.liked {
+    color: red;
+}
