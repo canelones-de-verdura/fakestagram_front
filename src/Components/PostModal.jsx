@@ -16,7 +16,7 @@ function PostModal({ open, setOpen, comments, updateComments }) {
         setInputValue(event.target.value);
     };
 
-    const sendComment = async (event) => {
+    const sendComment = async () => {
         const res = await CommentService.comment_post(inputValue, comments.postID, user.token);
 
         if (res.code === 201) {
