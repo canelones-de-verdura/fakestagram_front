@@ -50,45 +50,51 @@ const Feed = () => {
     }, []);
 
     return (
-        <>
-            <div className="feed-root">
-                <Sidebar />
-                <div className="feedContainer">
-                    <div className="feedHeader">
-                        <div className="iconos">
-                            <span className="material-symbols-outlined">favorite</span>
-                            <span className="material-symbols-outlined">add_box</span>
-                        </div>
-                    </div>
-
-                    <div className="postContainer">
-                        {posts.map((post, key) => {
-                            return (
-                                <Post
-                                    key={key}
-                                    post={post}
-                                    modalSetOpen={setOpen}
-                                    commentsArray={setOpenWith}
-                                />
-                            );
-                        })}
-                    </div>
-
-                    <div className="navContainer">
-                        <button className="buttonNav">
-                            <span className="imgNav material-symbols-outlined">home</span>
-                        </button>
-                        <button onClick={handlerProfile} className="buttonNav">
-                            <img
-                                className="imgNav"
-                                src={`${origin_url}/${user.profilePicture}`}
-                            />
-                        </button>
-                    </div>
-                </div>
+      <>
+        <div className="feed-root">
+          <Sidebar />
+          <div className="feedContainer">
+            <div className="feedHeader">
+              <div className="title-feed">Fakestagram</div>
+              <div className="iconos">
+                <span className="material-symbols-outlined">favorite</span>
+                <span className="material-symbols-outlined">add_box</span>
+              </div>
             </div>
-            <PostModal open={open} setOpen={setOpen} comments={openWith} updateComments={setOpenWith}/>
-        </>
+
+            <div className="postContainer">
+              {posts.map((post, key) => {
+                return (
+                  <Post
+                    key={key}
+                    post={post}
+                    modalSetOpen={setOpen}
+                    commentsArray={setOpenWith}
+                  />
+                );
+              })}
+            </div>
+
+            <div className="navContainer">
+              <button className="buttonNav">
+                <span className="imgNav material-symbols-outlined">home</span>
+              </button>
+              <button onClick={handlerProfile} className="buttonNav">
+                <img
+                  className="imgNav"
+                  src={`${origin_url}/${user.profilePicture}`}
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+        <PostModal
+          open={open}
+          setOpen={setOpen}
+          comments={openWith}
+          updateComments={setOpenWith}
+        />
+      </>
     );
 
 };

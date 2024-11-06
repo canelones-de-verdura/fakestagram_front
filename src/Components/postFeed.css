@@ -45,6 +45,7 @@
     padding-left: 16px;
     gap: 10px;
     display: flex;
+    padding-top: 15px;
 }
 
 .detailsItems {
@@ -58,7 +59,6 @@
     align-items: center;
     gap: 8px;
     padding-left: 16px;
-
 }
 
 
