@@ -9,10 +9,15 @@ body.feed-backround{
   margin: 0 auto;
 }
 
+.imgComponent{
+ 
+}
+
+
+
 .feedContainer {
   position: relative;
   margin: 0 auto;
-  /* Centrando el contenedor */
   width: 100%;
   max-width: 450px;
   text-align: left;
