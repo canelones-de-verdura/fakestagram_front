@@ -23,6 +23,7 @@ const Feed = () => {
     const [openWith, setOpenWith] = useState({}); // objeto con id del post + array de ids de comentarios
 
 
+
     useEffect(() => {
         const fetchImages = async () => {
             const res = await PostService.get_feed(user.token) // Falta token
