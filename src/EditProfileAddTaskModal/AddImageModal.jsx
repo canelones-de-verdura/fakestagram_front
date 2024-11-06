@@ -1,23 +1,23 @@
-// EditProfileModal.tsx
-import React, { useState } from 'react';
-import './AddImage.css'
+import React, { useState } from "react";
+import "./AddImage.css";
 
 const AddImageModal = ({ isOpen, onClose, onSave }) => {
   const [image, setImage] = useState(null);
   const [caption, setCaption] = useState("");
-
+  const [file, setFile] = useState();
   if (!isOpen) return null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSave({ image, caption }); // Llama a onSave para guardar la imagen y el comentario
+    onSave({image, file, caption }); // Llama a onSave para guardar la imagen y el comentario (el comentario igual no lo muestro)
     onClose();
   };
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setImage(URL.createObjectURL(file));
+    const fileToUpload = e.target.files[0];
+    if (fileToUpload) {
+      setFile(fileToUpload);
+      setImage(URL.createObjectURL(fileToUpload)); // Genera una URL temporal para previsualizar
     }
   };
 
@@ -38,7 +38,9 @@ const AddImageModal = ({ isOpen, onClose, onSave }) => {
             />
           </div>
           <button type="submit">Save</button>
-          <button type="button" onClick={onClose}>Cancel</button>
+          <button type="button" onClick={onClose}>
+            Cancel
+          </button>
         </form>
         {image && <img src={image} alt="Preview" className="image-preview" />}
       </div>
