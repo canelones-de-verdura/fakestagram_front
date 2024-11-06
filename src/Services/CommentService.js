@@ -4,7 +4,9 @@ const CommentService = {
     comment_post: async (comment, post_id, token) => {
         const res = await ApiService.post(
             `posts/${post_id}/comments`,
-            comment,
+            {
+                "content": comment,
+            },
             "application/json",
             token
         );
@@ -15,8 +17,6 @@ const CommentService = {
     get_comments: async (comment_id, token) => {
         const res = await ApiService.get(
             `posts/comments/${comment_id}`,
-            null,
-            null,
             token
         );
 

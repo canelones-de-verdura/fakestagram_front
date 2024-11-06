@@ -1,3 +1,3 @@
 # Por hacer  
 
-(agregar cosas acá)
+ - agregar PUT en ProfileService
