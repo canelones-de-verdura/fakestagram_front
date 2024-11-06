@@ -5,11 +5,15 @@ import origin_url from "../Services/Origin";
 import "./postFeed.css";
 
 const Post = ({ post, modalSetOpen, commentsArray }) => {
-    const [currentPost, setCurrentPost] = useState(post)
-
-    const likesCount = Array.isArray(post.likes) ? post.likes.length : 0;
+    const [currentPost] = useState(post);
+    const [liked, setLiked] = useState(false);
+    const [likesCount, setLikesCount] = useState(post.likes ? post.likes.length : 0); 
+    
     const handlerLike = () => {
-    }
+        setLiked(!liked); 
+        setLikesCount((prevLikes) => liked ? prevLikes - 1 : prevLikes + 1);
+    };
+
     const openComments = () => {
         modalSetOpen(true)
         commentsArray({ postID: currentPost._id, comments: currentPost.comments})
@@ -33,8 +37,9 @@ const Post = ({ post, modalSetOpen, commentsArray }) => {
             </div>
             <div className="interactionContainer">
                 <div className="likeContainer">
-                    <span className="material-symbols-outlined detailsItems" onClick={handlerLike}>
-                        favorite
+                    <span className={`material-symbols-outlined detailsItems ${liked ? "liked" : ""}`} 
+                        onClick={handlerLike}
+                    >    favorite
                     </span>
                     <span className="likesCount">{likesCount}</span>
                 </div>
