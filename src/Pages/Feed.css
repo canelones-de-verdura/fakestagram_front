@@ -9,10 +9,15 @@ body.feed-backround{
   margin: 0 auto;
 }
 
+.imgComponent{
+ 
+}
+
+
+
 .feedContainer {
   position: relative;
   margin: 0 auto;
-  /* Centrando el contenedor */
   width: 100%;
   max-width: 450px;
   text-align: left;
@@ -101,6 +106,8 @@ h2 {
   border-radius: 50%;
 }
 
+
+
 .buttonNav img {
   width: 100%;
   height: 100%;
@@ -108,11 +115,20 @@ h2 {
   object-fit: cover;
 }
 
+.title-feed{
+  font-size: 18px;
+  font-weight: bold;
+  flex:auto;
+}
+
 
 
 }
 @media(min-width: 426px){
   .navContainer{
+    display: none;
+  }
+  .title-feed{
     display: none;
   }
 }
