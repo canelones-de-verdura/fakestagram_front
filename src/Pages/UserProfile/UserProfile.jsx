@@ -24,17 +24,17 @@ const UserProfile = ({ user }) => {
     setUserName(updatedUser.userName);
   };
 
-  const onSaveImage = async ({ image, file, caption }) => {
-    const newPost = { imageUrl: image }; //Aca el caption no va
+  const onSaveImage = async ({ image, file, caption }) => { //image es para la previsualización el modal y file para guardar la imagen en la bd
+    const newPost = { imageUrl: image }; //Aca el caption no v
     const updatedPosts = [...posts, newPost];
     setPosts(updatedPosts);
     setPostQuantity(updatedPosts.length);
     const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmI1Y2EwZjgwMWJjNDNkYjI3MGQ2MSIsImlhdCI6MTczMDg5ODg3OCwiZXhwIjoxNzMzNDkwODc4fQ.BIGR41UO_XsA0mbaBW4k7G1m-VkqAbNcbwwEr_VBzaw"; //Token de prueba
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmI1Y2EwZjgwMWJjNDNkYjI3MGQ2MSIsImlhdCI6MTczMDkzMTcxMiwiZXhwIjoxNzMzNTIzNzEyfQ.zEWTT7LxxzayWPyereSGf8HI4_VAxM2U9fsB39pWa5I"; //Token de prueba
     await MyProfileService.postImage(
       caption,
       file,
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmI1Y2EwZjgwMWJjNDNkYjI3MGQ2MSIsImlhdCI6MTczMDg5ODg3OCwiZXhwIjoxNzMzNDkwODc4fQ.BIGR41UO_XsA0mbaBW4k7G1m-VkqAbNcbwwEr_VBzaw" /*userBackend.token*/
+      token /*userBackend.token*/
     );
   };
 

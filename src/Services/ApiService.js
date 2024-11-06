@@ -30,7 +30,7 @@ const ApiService = {
                 "Content-Type": `${content_type}`,
             },
         };
-
+        console.log(`${default_url}/${resource}`);
         const api_response = await fetch(`${default_url}/${resource}`, request);
 
         console.log(`POST: ${api_response.status}, ${api_response.statusText}`);
