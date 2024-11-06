@@ -16,15 +16,18 @@ function PostModal({ open, setOpen, comments, updateComments }) {
         setInputValue(event.target.value);
     };
 
-    const sendComment = async () => {
+    const sendComment = async (event) => {
         const res = await CommentService.comment_post(inputValue, comments.postID, user.token);
 
-        if (res.code === 201)
+        if (res.code === 201) {
             updateComments((prevState) => ({
                 ...prevState,
                 comments: [...prevState.comments, res.data._id],
             }))
-    }
+
+            setInputValue("");
+        }
+    };
 
     return (
         <>
@@ -40,7 +43,7 @@ function PostModal({ open, setOpen, comments, updateComments }) {
                 >
                     <CommentListComponent comments={comments.comments} />
                     <div className='inputcontainer'>
-                        <input className="input" type="text" onChange={updateComment} maxLength="50" placeholder='Escribe un comentario...' />
+                        <input className="input" type="text" onChange={updateComment} maxLength="50" placeholder='Escribe un comentario...' value={inputValue} />
                         <span className="send material-symbols-outlined" onClick={sendComment}>
                             send
                         </span>
