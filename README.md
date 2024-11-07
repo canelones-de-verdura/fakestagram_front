@@ -8,5 +8,7 @@
  - logout en barra vertical y de abajo - Bruno
  - foto de perfil predeterminada si el usuario no subió nada - Bruno
 
+ - arreglar comentarios- o hablar con los profes que reviertan los cambios al back
+
 
  - hacer mobile - todos
