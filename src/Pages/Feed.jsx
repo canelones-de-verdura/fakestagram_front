@@ -6,6 +6,7 @@ import PostService from "../Services/PostService";
 import origin_url from "../Services/Origin";
 import Sidebar from "../Components/SideBar";
 import PostModal from "../Components/PostModal";
+import ProfilePhoto from "../Components/ProfilePhoto";
 
 const Feed = () => {
     // User
@@ -21,6 +22,12 @@ const Feed = () => {
     // Para abrir/cerrar los comentarios
     const [open, setOpen] = useState(false);
     const [openWith, setOpenWith] = useState({}); // objeto con id del post + array de ids de comentarios
+
+    //Logout
+    const handleLogout = () => {
+      localStorage.removeItem("user");
+      navigate("/login");
+    };
 
 
 
@@ -76,13 +83,13 @@ const Feed = () => {
             </div>
 
             <div className="navContainer">
-              <button className="buttonNav">
-                <span className="imgNav material-symbols-outlined">home</span>
+              <button onClick={handleLogout} className="buttonNav">
+                <span className="imgNav material-symbols-outlined">logout</span>
               </button>
               <button onClick={handlerProfile} className="buttonNav">
-                <img
-                  className="imgNav"
-                  src={`${origin_url}/${user.profilePicture}`}
+                <ProfilePhoto
+                  profilePicture={user.profilePicture}
+                  username={user.username}
                 />
               </button>
             </div>
