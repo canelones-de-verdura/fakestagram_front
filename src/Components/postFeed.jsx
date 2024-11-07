@@ -2,6 +2,7 @@ import { useState } from "react";
 import ImageComponent from "./ImageComponent";
 import origin_url from "../Services/Origin";
 import ProfilePhoto from "./ProfilePhoto";
+import Heart from "react-animated-heart";
 
 import "./postFeed.css";
 
@@ -43,15 +44,7 @@ const Post = ({ post, modalSetOpen, commentsArray }) => {
         </div>
         <div className="interactionContainer">
           <div className="likeContainer">
-            <span
-              className={`material-symbols-outlined detailsItems ${
-                liked ? "liked" : ""
-              }`}
-              onClick={handlerLike}
-            >
-              {" "}
-              favorite
-            </span>
+            <Heart isClick={liked} onClick={handlerLike} className="smallHeart" />
             <span className="likesCount">{likesCount}</span>
           </div>
 
