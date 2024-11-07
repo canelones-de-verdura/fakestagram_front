@@ -40,9 +40,10 @@
     font-size: 14px;
 }
 
-.detailsItems {
-    height: 15px;
+.material-symbols-outlined {
+    height: 19px;
     cursor: pointer;
+    
 }
 
 
@@ -71,7 +72,7 @@
     align-items: center;
     height: 50px;
     width: 70px;
-    margin-left: -28px;
+    margin-left: -28px; 
 }
 
 .go4268192979 {
