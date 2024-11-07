@@ -52,7 +52,8 @@ const Post = ({ post, modalSetOpen, commentsArray }) => {
             <span className="likesCount">{likesCount}</span>
           </div>
 
-          <span className="material-symbols-outlined">chat_bubble</span>
+          <span className="material-symbols-outlined"
+          onClick={openComments}>chat_bubble</span>
         </div>
         <div className="detailsContainer">
           <div className="likes">{currentPost.likes}</div>
