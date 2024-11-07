@@ -40,17 +40,8 @@
     font-size: 14px;
 }
 
-
-.interactionContainer {
-    padding-left: 16px;
-    gap: 10px;
-    display: flex;
-    padding-top: 15px;
-}
-
 .detailsItems {
-    height: 24px;
-    width: 24px;
+    height: 15px;
 }
 
 .descriptionContainer {
@@ -67,14 +58,35 @@
     font-size: 14px;
 }
 
-.likeCount{
-    font-weight: bold;
+.interactionContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;   
 }
 
-.liked {
-    color: red;
+.likeContainer {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 70px;
+    margin-left: -28px;
 }
 
-.detailsItems.liked {
-    color: red;
+.go4268192979 {
+    transform: scale(0.5);
+    display: inline-block;
+    vertical-align: middle;
+    z-index: 9999;
+}
+
+.go2484888251{
+    transform: scale(0.5);
+    display: inline-block;
+    vertical-align: middle;
+    z-index: 9999;
+}
+
+.likesCount {
+    font-size: 14px;
+    margin: inherit;
 }
