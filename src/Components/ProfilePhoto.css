@@ -1,0 +1,11 @@
+.profilePhotoContainer{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.imgProfile {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
