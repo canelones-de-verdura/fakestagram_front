@@ -44,16 +44,15 @@ const Post = ({ post, modalSetOpen, commentsArray }) => {
         </div>
         <div className="interactionContainer">
           <div className="likeContainer">
-            <Heart isClick={liked} onClick={handlerLike} className="smallHeart" />
+            <Heart
+              isClick={liked}
+              onClick={handlerLike}
+              className="smallHeart"
+            />
             <span className="likesCount">{likesCount}</span>
           </div>
 
-          <span
-            className="material-symbols-outlined detailsItems"
-            onClick={openComments}
-          >
-            comment
-          </span>
+          <span className="material-symbols-outlined">chat_bubble</span>
         </div>
         <div className="detailsContainer">
           <div className="likes">{currentPost.likes}</div>
