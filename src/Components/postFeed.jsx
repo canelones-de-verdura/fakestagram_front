@@ -5,6 +5,7 @@ import ProfilePhoto from "./ProfilePhoto";
 import Heart from "react-animated-heart";
 
 import "./postFeed.css";
+import MapComment from "../Models/CommentModel";
 
 const Post = ({ post, modalSetOpen, commentsArray }) => {
     const [currentPost] = useState(post);
@@ -19,7 +20,8 @@ const Post = ({ post, modalSetOpen, commentsArray }) => {
 
     const openComments = () => {
         modalSetOpen(true)
-        commentsArray({ postID: currentPost._id, comments: currentPost.comments})
+        const comm = currentPost.comments.map(comment => MapComment(comment));
+        commentsArray({ postID: currentPost._id, comments: comm})
     }
 
     return (

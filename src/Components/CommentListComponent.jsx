@@ -1,3 +1,4 @@
+import MapComment from "../Models/CommentModel";
 import CommentComponent from "./CommentComponent";
 import "./CommentListComponent.css"
 
@@ -6,7 +7,10 @@ function CommentListComponent({ comments }) {
         <>
             <div className="list" >
                 {comments.map((comment, key) => {
-                    return <CommentComponent key={key} comment={comment} />
+                    return <CommentComponent
+                        key={key}
+                        comment={comment}
+                    />
                 })}
             </div>
         </>

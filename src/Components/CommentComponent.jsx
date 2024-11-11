@@ -10,10 +10,17 @@ function CommentComponent({ comment }) {
     // recuperamos usuario actual
     const user = JSON.parse(localStorage.getItem("user"));
 
-    const [current_comment, setCurrentComment] = useState(comment); // por las dudas guradamos acá
+    const [current_user, setCurrentUser] = useState(comment); // por las dudas guradamos acá
 
-    console.log(comment)
-    //useEffect(() => {
+    useEffect(() => {
+        const getUser = async () => {
+            const usr = await ProfileService.get_profile(comment.user_id, user.token);
+
+            if (usr.code === 200) setCurrentUser(usr.data);
+        };
+
+        getUser();
+
         //  const getComment = async () => {
         //    const comm = await CommentService.get_comments(comment, user.token);
         //
@@ -21,18 +28,18 @@ function CommentComponent({ comment }) {
         //  };
         //
         //  getComment();
-    //}, []);
+    }, []);
 
-    if (!current_comment) return; // como me revienta tener que hacer esto
+    if (!current_user || !current_user.user) return; // como me revienta tener que hacer esto
 
     return (
         <div className="comment">
             <ProfilePhoto
-                profilePicture={user.profilePicture}
-                username={user.username}
+                profilePicture={current_user.user.profileImage}
+                username={current_user.user.username}
             />
             <span>
-                <b>{current_comment.user.username}</b> {current_comment.content}
+                <b>{current_user.user.username}</b> {comment.content}
             </span>
         </div>
     );

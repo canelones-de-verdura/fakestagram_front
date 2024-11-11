@@ -4,6 +4,7 @@ import "./PostModal.css";
 import CommentListComponent from './CommentListComponent';
 import { useState } from 'react';
 import CommentService from '../Services/CommentService';
+import MapComment from '../Models/CommentModel';
 
 function PostModal({ open, setOpen, comments, updateComments }) {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -22,7 +23,7 @@ function PostModal({ open, setOpen, comments, updateComments }) {
         if (res.code === 201) {
             updateComments((prevState) => ({
                 ...prevState,
-                comments: [...prevState.comments, res.data._id],
+                comments: [...prevState.comments, MapComment(res.data)],
             }))
 
             setInputValue("");

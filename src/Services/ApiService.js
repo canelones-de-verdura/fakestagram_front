@@ -13,7 +13,7 @@ const ApiService = {
 
         const api_response = await fetch(`${default_url}/${resource}`, request);
 
-        console.log(`POST: ${api_response.status}, ${api_response.statusText}`);
+        console.log(`GET: ${api_response.status}, ${api_response.statusText}`);
 
         const response = { code: api_response.status, data: null };
 
