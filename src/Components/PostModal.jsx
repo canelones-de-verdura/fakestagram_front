@@ -5,6 +5,7 @@ import CommentListComponent from './CommentListComponent';
 import { useState } from 'react';
 import CommentService from '../Services/CommentService';
 
+
 function PostModal({ open, setOpen, comments, updateComments }) {
     const user = JSON.parse(localStorage.getItem("user"));
     const [inputValue, setInputValue] = useState("");
