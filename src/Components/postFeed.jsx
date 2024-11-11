@@ -9,6 +9,7 @@ const Post = ({ post, modalSetOpen, commentsArray }) => {
     const [liked, setLiked] = useState(false);
     const [likesCount, setLikesCount] = useState(post.likes ? post.likes.length : 0); 
     
+    
     const handlerLike = () => {
         setLiked(!liked); 
         setLikesCount((prevLikes) => liked ? prevLikes - 1 : prevLikes + 1);

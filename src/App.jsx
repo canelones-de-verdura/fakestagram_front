@@ -1,6 +1,7 @@
 /* Functions */
 import { Routes, Route, Navigate } from 'react-router-dom'
 
+
 /* Pages */
 import Login from './Pages/Login'
 import Register from './Pages/Register'
