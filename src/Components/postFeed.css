@@ -70,7 +70,7 @@
 .likeContainer {
     display: flex;
     align-items: center;
-    height: 50px;
+    height: 30px;
     width: 70px;
     margin-left: -28px; 
 }
