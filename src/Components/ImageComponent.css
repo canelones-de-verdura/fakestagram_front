@@ -5,8 +5,19 @@
     flex-direction: column;
 }
 
-.imgInComponent {
-    max-width: 425px;
-    height: 350px;
-    object-fit: contain;
+.imgContainer img {
+    width: 98%;
+    height: 95%;
+    object-fit: cover;
+    display: block;
+    padding-top: 5px;
+}
+
+.imgContainer {
+    width: 100%;
+    max-width: 468px;
+    max-height: 500px;
+    height: auto;
+    overflow: hidden;
+    position: relative;
 }

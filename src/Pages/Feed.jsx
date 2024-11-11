@@ -6,6 +6,7 @@ import PostService from "../Services/PostService";
 import origin_url from "../Services/Origin";
 import Sidebar from "../Components/SideBar";
 import PostModal from "../Components/PostModal";
+import ProfilePhoto from "../Components/ProfilePhoto";
 
 const Feed = () => {
     // User
@@ -18,8 +19,15 @@ const Feed = () => {
     const [posts, setPosts] = useState([]); // Estado para almacenar las imagenes
 
 
-    // Para abrir/cerrar los posts
-    const [open, setOpen] = useState(true);
+    // Para abrir/cerrar los comentarios
+    const [open, setOpen] = useState(false);
+    const [openWith, setOpenWith] = useState({}); // objeto con id del post + array de ids de comentarios
+
+    //Logout
+    const handleLogout = () => {
+      localStorage.removeItem("user");
+      navigate("/login");
+    };
 
 
 
@@ -49,50 +57,51 @@ const Feed = () => {
     }, []);
 
     return (
-        <>
-            <div className="feed-root">
-                <Sidebar />
-                <div className="feedContainer">
-                    <div className="feedHeader">
-                        <div className="iconos">
-                            <span className="material-symbols-outlined">favorite</span>
-                            <span className="material-symbols-outlined">add_box</span>
-                        </div>
-
-                    </div>
-                    <div className="postContainer">
-                        {posts.map((post, key) => {
-                            /////////////////
-                            console.log(post)
-                            /////////////////
-
-                            return (
-                                <Post
-                                    key={key}
-                                    nomUsuario={post.user.username}
-                                    profileImg={`${origin_url}/${post.user.profilePicture}`}
-                                    img={`${origin_url}/${post.imageUrl}`}
-                                    description={post.caption}
-                                    likes={post.likes}
-                                />
-                            );
-                        })}
-                    </div>
-                    <div className="navContainer">
-                        <button className="buttonNav">
-                            <span className="imgNav material-symbols-outlined">home</span>
-                        </button>
-                        <button onClick={handlerProfile} className="buttonNav">
-                            <img
-                                className="imgNav"
-                                src={`${origin_url}/${user.profilePicture}`}
-                            />
-                        </button>
-                    </div>
-                </div>
+      <>
+        <div className="feed-root">
+          <Sidebar />
+          <div className="feedContainer">
+            <div className="feedHeader">
+              <div className="title-feed">Fakestagram</div>
+              <div className="iconos">
+                <span className="material-symbols-outlined">favorite</span>
+                <span className="material-symbols-outlined">add_box</span>
+              </div>
             </div>
-            <PostModal open={open} setOpen={setOpen} />
-        </>
+
+            <div className="postContainer">
+              {posts.map((post, key) => {
+                return (
+                  <Post
+                    key={key}
+                    post={post}
+                    modalSetOpen={setOpen}
+                    commentsArray={setOpenWith}
+                  />
+                );
+              })}
+            </div>
+
+            <div className="navContainer">
+              <button onClick={handleLogout} className="buttonNav">
+                <span className="imgNav material-symbols-outlined">logout</span>
+              </button>
+              <button onClick={handlerProfile} className="buttonNav">
+                <ProfilePhoto
+                  profilePicture={user.profilePicture}
+                  username={user.username}
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+        <PostModal
+          open={open}
+          setOpen={setOpen}
+          comments={openWith}
+          updateComments={setOpenWith}
+        />
+      </>
     );
 
 };

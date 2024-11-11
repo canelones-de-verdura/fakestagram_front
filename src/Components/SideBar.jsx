@@ -2,10 +2,16 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import origin_url from "../Services/Origin";
 import "./Sidebar.css";
+import ProfilePhoto from "./ProfilePhoto";
 
 const Sidebar = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("user"); // Eliminar el usuario del localStorage
+    navigate("/login"); // Redirigir al login
+  };
 
   return (
     <div className="sidebar">
@@ -22,12 +28,15 @@ const Sidebar = () => {
       </button>
 
       <button className="buttonNavv" onClick={() => navigate("/profile")}>
-        <img
-          className="imgNav"
-          src={`${origin_url}/${user.profilePicture}`}
-          alt="Profile"
+        <ProfilePhoto
+          profilePicture={user.profilePicture}
+          username={user.username}
         />
         <span>Profile</span>
+      </button>
+      <button className="buttonNavv logoutButton" onClick={handleLogout}>
+        <span className="material-symbols-outlined">logout</span>
+        <span>Logout</span>
       </button>
     </div>
   );

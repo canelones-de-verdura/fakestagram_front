@@ -2,9 +2,9 @@ import "./ImageComponent.css"
 
 function ImageComponent({ image, alt_text }) {
     return (
-    <div className="imgComponent">
+        <div className="imgComponent" >
             <img className="imgInComponent" src={image} alt={`${alt_text} image`} />
-    </div>
+        </div>
     );
 }
 

@@ -12,7 +12,6 @@ body.feed-backround{
 .feedContainer {
   position: relative;
   margin: 0 auto;
-  /* Centrando el contenedor */
   width: 100%;
   max-width: 450px;
   text-align: left;
@@ -101,11 +100,18 @@ h2 {
   border-radius: 50%;
 }
 
+
+
 .buttonNav img {
-  width: 100%;
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.title-feed{
+  font-size: 18px;
+  font-weight: bold;
+  flex:auto;
 }
 
 
@@ -113,6 +119,9 @@ h2 {
 }
 @media(min-width: 426px){
   .navContainer{
+    display: none;
+  }
+  .title-feed{
     display: none;
   }
 }
