@@ -3,7 +3,7 @@ import ApiService from "./ApiService";
 const LikeService = {
     like_post: async (post_id, token) => {
         const res = await ApiService.post(
-            `posts/${post_id}/comments`,
+            `posts/${post_id}/like`,
             null,
             null,
             token
