@@ -16,6 +16,18 @@ const MyProfileService = {
         );
 
         return response;
+    },
+
+    editProfile: async(userName, trueName, bio, token) => {
+        const updateUser = {
+            username: userName,
+            description:bio,
+            name: trueName
+        }
+        
+        const response = await ApiService2.put("user/profile/edit", updateUser, "application/json", token);
+        console.log("EXITO");
+        return response;
     }
 };
 

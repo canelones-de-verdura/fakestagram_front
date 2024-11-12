@@ -18,19 +18,19 @@ const UserProfile = ({ user }) => {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [posts, setPosts] = useState(user.posts);
 
-  const handleEditProfile = (updatedUser) => {
+  const handleEditProfile = async (updatedUser) => {
     setName(updatedUser.name);
     setBio(updatedUser.bio);
     setUserName(updatedUser.userName);
+    await MyProfileService.editProfile(updatedUser.userName, updatedUser.name, updatedUser.bio, token);
   };
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmI1Y2EwZjgwMWJjNDNkYjI3MGQ2MSIsImlhdCI6MTczMTQzNDgzOSwiZXhwIjoxNzM0MDI2ODM5fQ.YOuP4lSIBF-Yo4L-aR2qnBHOkVP5oM_wHThSJJX6RYw";//token de prueba
 
   const onSaveImage = async ({ image, file, caption }) => { //image es para la previsualización el modal y file para guardar la imagen en la bd
     const newPost = { imageUrl: image }; //Aca el caption no v
     const updatedPosts = [...posts, newPost];
     setPosts(updatedPosts);
     setPostQuantity(updatedPosts.length);
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmI1Y2EwZjgwMWJjNDNkYjI3MGQ2MSIsImlhdCI6MTczMDkzMTcxMiwiZXhwIjoxNzMzNTIzNzEyfQ.zEWTT7LxxzayWPyereSGf8HI4_VAxM2U9fsB39pWa5I"; //Token de prueba
     await MyProfileService.postImage(
       caption,
       file,
