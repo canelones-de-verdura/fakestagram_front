@@ -6,7 +6,10 @@ function CommentListComponent({ comments }) {
         <>
             <div className="list" >
                 {comments.map((comment, key) => {
-                    return <CommentComponent key={key} comment={comment} />
+                    return <CommentComponent
+                        key={key}
+                        comment={comment}
+                    />
                 })}
             </div>
         </>

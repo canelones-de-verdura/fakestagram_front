@@ -6,6 +6,7 @@ import Heart from "react-animated-heart";
 import LikeService from '../Services/LikeService';
 
 import "./postFeed.css";
+import MapComment from "../Models/CommentModel";
 
 const Post = ({ post, modalSetOpen, commentsArray }) => {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -15,28 +16,26 @@ const Post = ({ post, modalSetOpen, commentsArray }) => {
   );
   const [likesCount, setLikesCount] = useState(currentPost.likes ? currentPost.likes.length : 0);
 
-
   const handlerLike = async () => {
     if (liked) {
       const res = await LikeService.remove_like(post._id, user.token);
-      setLiked(!liked)
+      setLiked(!liked);
       setLikesCount((prevLikes) => liked ? prevLikes - 1 : prevLikes + 1);
-      console.log(res)
+      console.log(res);
     } else {
-
       const res = await LikeService.like_post(post._id, user.token);
-      console.log(res)
-      setLiked(!liked)
+      console.log(res);
+      setLiked(!liked);
       setLikesCount((prevLikes) => liked ? prevLikes - 1 : prevLikes + 1);
-
     }
   };
 
 
   const openComments = () => {
-    modalSetOpen(true)
-    commentsArray({ postID: currentPost._id, comments: currentPost.comments })
-  }
+    modalSetOpen(true);
+    const comm = currentPost.comments.map(comment => MapComment(comment));
+    commentsArray({ postID: currentPost._id, comments: comm});
+  };
 
   return (
     <>
@@ -79,6 +78,6 @@ const Post = ({ post, modalSetOpen, commentsArray }) => {
       </div>
     </>
   );
-}
+};
 
 export default Post;
