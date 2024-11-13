@@ -1,4 +1,3 @@
-import MapComment from "../Models/CommentModel";
 import CommentComponent from "./CommentComponent";
 import "./CommentListComponent.css"
 
