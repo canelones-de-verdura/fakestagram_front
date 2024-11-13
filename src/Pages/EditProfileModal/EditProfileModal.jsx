@@ -14,7 +14,7 @@ const EditProfileModal = ({ isOpen, onClose, user, onSave }) => {
     onSave({ ...user, name, bio, userName }); // Llama a la función onSave para actualizar el usuario
     onClose(); // Cierra el modal
   };
-  console.log("HOL")
+  console.log(name)
   console.log(userName);
   console.log(bio)
   return (

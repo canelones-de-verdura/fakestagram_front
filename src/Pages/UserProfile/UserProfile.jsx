@@ -81,7 +81,7 @@ const UserProfile = ({ user }) => {
       </div>
       <div className="profile-gallery">
         {posts.map((post, index) => (
-          <div key={index} className="gallery-item">
+          <div key={index}> {/*le borre aca la  className="gallery-item" porque tras meter el hotFix no hacia nada*/}
             <img src={post.imageUrl} alt={`Post ${index}`} className="hotFix" />
             <p>{post.caption}</p>
           </div>
