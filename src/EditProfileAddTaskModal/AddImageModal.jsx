@@ -17,6 +17,8 @@ const AddImageModal = ({ isOpen, onClose, onSave }) => {
     const fileToUpload = e.target.files[0];
     if (fileToUpload) {
       setFile(fileToUpload);
+      console.log("IMAGEN DEL POST: ")
+      console.log(fileToUpload);
       setImage(URL.createObjectURL(fileToUpload)); // Genera una URL temporal para previsualizar
     }
   };

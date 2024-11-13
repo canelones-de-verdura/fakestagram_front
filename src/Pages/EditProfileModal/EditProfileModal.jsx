@@ -1,4 +1,3 @@
-// EditProfileModal.tsx
 import React, { useState } from 'react';
 import './EditProfileModal.css';
 
@@ -6,17 +5,27 @@ const EditProfileModal = ({ isOpen, onClose, user, onSave }) => {
   const [name, setName] = useState(user.name);
   const [bio, setBio] = useState(user.bio);
   const [userName, setUserName] = useState(user.userName);
+  const [profilePicture, setProfilePicture] = useState(user.profilePicture);
+  const [file, setFile] = useState(null);
 
-  if (!isOpen) return null; //Esto es para no renderizar el modal si no está abierto
+  if (!isOpen) return null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSave({ ...user, name, bio, userName }); // Llama a la función onSave para actualizar el usuario
-    onClose(); // Cierra el modal
+    onSave({ ...user, name, bio, userName, file });
+    onClose();
   };
-  console.log(name)
-  console.log(userName);
-  console.log(bio)
+
+  const handleImageChange = (e) => {
+    const fileToUpload = e.target.files[0];
+    if (fileToUpload) {
+      setFile(fileToUpload);
+      console.log("IMAGEN CONVERTIDA")
+      console.log(fileToUpload);
+      setProfilePicture(URL.createObjectURL(fileToUpload));
+    }
+  };
+
   return (
     <div className="modal-overlay">
       <div className="modal-content">
@@ -45,9 +54,15 @@ const EditProfileModal = ({ isOpen, onClose, user, onSave }) => {
               onChange={(e) => setBio(e.target.value)}
             />
           </div>
+          <div>
+            <label>Image:</label>
+            <input type="file" accept="image/*" onChange={handleImageChange} />
+          </div>
           <button type="submit">Save</button>
           <button type="button" onClick={onClose}>Cancel</button>
         </form>
+        {/* Solo muestra la imagen si se ha seleccionado una nueva */}
+        {file && <img src={profilePicture} alt="Preview" className="image-preview" />}
       </div>
     </div>
   );

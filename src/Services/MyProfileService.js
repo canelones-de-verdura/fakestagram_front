@@ -14,6 +14,7 @@ const MyProfileService = {
             null, // No se necesita `Content-Type` aquí
             token // Esto es para acceder a la ruta validadada con el token
         );
+        console.log("EL POST ES (asi llega la imagen al post): "+image);
 
         return response;
     },
@@ -22,13 +23,24 @@ const MyProfileService = {
         const updateUser = {
             username: userName,
             description:bio,
-            name: trueName
+            name: trueName,
         }
-        
+
         const response = await ApiService2.put("user/profile/edit", updateUser, "application/json", token);
-        console.log("EXITO");
+        return response;
+    },
+
+    editImageProfile: async (profilePicture, token) =>{
+        const formData = new FormData();
+        formData.append("profilePicture", profilePicture);
+
+        const response = await ApiService2.put("user/profile/edit", formData, "application/json", token);
+        console.log("Asi llega la Imagen al servicio: "+profilePicture);
+        console.log(response);
         return response;
     }
+
+
 };
 
 export default MyProfileService;
