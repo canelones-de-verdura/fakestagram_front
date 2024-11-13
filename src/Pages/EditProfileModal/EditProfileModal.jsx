@@ -6,24 +6,17 @@ const EditProfileModal = ({ isOpen, onClose, user, onSave }) => {
   const [bio, setBio] = useState(user.bio);
   const [userName, setUserName] = useState(user.userName);
   const [profilePicture, setProfilePicture] = useState(user.profilePicture);
-  const [file, setFile] = useState(null);
 
   if (!isOpen) return null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSave({ ...user, name, bio, userName, file });
+    onSave({ ...user, name, bio, userName, profilePicture });
     onClose();
   };
 
   const handleImageChange = (e) => {
-    const fileToUpload = e.target.files[0];
-    if (fileToUpload) {
-      setFile(fileToUpload);
-      console.log("IMAGEN CONVERTIDA")
-      console.log(fileToUpload);
-      setProfilePicture(URL.createObjectURL(fileToUpload));
-    }
+    setProfilePicture(e.target.value); // Almacena la URL directamente
   };
 
   return (
@@ -55,14 +48,18 @@ const EditProfileModal = ({ isOpen, onClose, user, onSave }) => {
             />
           </div>
           <div>
-            <label>Image:</label>
-            <input type="file" accept="image/*" onChange={handleImageChange} />
+            <label>Image URL:</label>
+            <input
+              type="text"
+              value={profilePicture}
+              onChange={handleImageChange} // Cambia al URL ingresado
+            />
           </div>
           <button type="submit">Save</button>
           <button type="button" onClick={onClose}>Cancel</button>
         </form>
-        {/* Solo muestra la imagen si se ha seleccionado una nueva */}
-        {file && <img src={profilePicture} alt="Preview" className="image-preview" />}
+        {/* Muestra la imagen solo si hay una URL válida */}
+        {profilePicture && <img src={profilePicture} alt="Preview" className="image-preview" />}
       </div>
     </div>
   );

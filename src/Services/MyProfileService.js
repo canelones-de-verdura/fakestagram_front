@@ -19,11 +19,12 @@ const MyProfileService = {
         return response;
     },
 
-    editProfile: async(userName, trueName, bio, token) => {
+    editProfile: async(userName, trueName, bio, profileImage,token) => {
         const updateUser = {
             username: userName,
             description:bio,
             name: trueName,
+            profilePicture: profileImage
         }
 
         const response = await ApiService2.put("user/profile/edit", updateUser, "application/json", token);

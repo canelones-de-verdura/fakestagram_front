@@ -26,12 +26,8 @@ const UserProfile = ({ user }) => {
     setBio(updatedUser.bio);
     setUserName(updatedUser.userName);
     setProfilePicture(updatedUser.profilePicture);
-    console.log(updatedUser.file)
     console.log("user props: "+ JSON.stringify(updatedUser));
-    await MyProfileService.editProfile(updatedUser.userName, updatedUser.name, updatedUser.bio, token);
-    console.log("Datos enviados sin la imagen");
-    await MyProfileService.editImageProfile(updatedUser.file, token);
-    console.log("IMAGEN ENVIADA");
+    await MyProfileService.editProfile(updatedUser.userName, updatedUser.name, updatedUser.bio, updatedUser.profilePicture,token);
   };
   const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmI1Y2EwZjgwMWJjNDNkYjI3MGQ2MSIsImlhdCI6MTczMTQzNDgzOSwiZXhwIjoxNzM0MDI2ODM5fQ.YOuP4lSIBF-Yo4L-aR2qnBHOkVP5oM_wHThSJJX6RYw";//token de prueba
 
