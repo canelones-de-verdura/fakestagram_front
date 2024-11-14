@@ -33,11 +33,7 @@ function CommentComponent({ comment }) {
     if (!current_user || !current_user.user) return; // como me revienta tener que hacer esto
 
     return (
-        <div className="comment">
-            <ProfilePhoto
-                profilePicture={current_user.user.profileImage}
-                username={current_user.user.username}
-            />
+        <div className="comment">       
             <span>
                 <b>{current_user.user.username}</b> {comment.content}
             </span>

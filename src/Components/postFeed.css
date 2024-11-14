@@ -1,93 +1,112 @@
 .userInfo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-bottom: 1px solid #ddd;
-    height: 30px;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-bottom: 1px solid #ddd;
+  height: 30px;
 }
 
 .userInfo img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    /* Hace la imagen de perfil redonda */
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  /* Hace la imagen de perfil redonda */
 }
 
 .nomImgContainer {
-    height: 100%;
-    display: flex;
-    gap: 5px;
-    width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 5px;
+  width: 100%;
 }
 
 #optionsButton {
-    background-color: transparent;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    padding: 0;
-    align-items: center;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  align-items: center;
 }
 
 #nomUsuario {
-    margin: 0;
-    color: black;
-    line-height: 27px;
-    font-weight: bold;
-    font-size: 14px;
+  margin: 0;
+  color: black;
+  line-height: 27px;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .material-symbols-outlined {
-    height: 19px;
-    cursor: pointer;
-    
+  height: 19px;
+  cursor: pointer;
 }
-
 
 .descriptionContainer {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    gap: 8px;
-    padding-left: 16px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 8px;
 }
 
-
 #description {
-    color: black;
-    font-size: 14px;
+  color: black;
+  font-size: 14px;
 }
 
 .interactionContainer {
-    display: flex;
-    align-items: center;
-    gap: 8px;   
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .likeContainer {
-    display: flex;
-    align-items: center;
-    height: 30px;
-    width: 70px;
-    margin-left: -28px; 
+  display: flex;
+  align-items: center;
+  height: 30px;
+  width: 70px;
+  margin-left: -28px;
 }
 
 .go4268192979 {
-    transform: scale(0.5);
-    display: inline-block;
-    vertical-align: middle;
+  transform: scale(0.6);
+  display: inline-block;
+  vertical-align: middle;
 }
 
-.go2484888251{
-    transform: scale(0.5);
-    display: inline-block;
-    vertical-align: middle;
+.go2484888251 {
+  transform: scale(0.7);
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .likesCount {
-    font-size: 14px;
-    margin: inherit;
+  font-size: 14px;
+  font-weight: bold;
+  height: 10px;
+}
+
+.commentsPreview {
+  margin-top: 8px;
+  width: 100%;
+}
+
+.likeContainer {
+  display: flex;
+  align-items: center;
+}
+
+.likeCommentContainer {
+  display: flex;
+  align-items: center;
+}
+
+.detailsContainer {
+  height: 40px;
+}
+
+.comment {
+  font-size: 14px;
 }
