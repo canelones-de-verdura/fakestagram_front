@@ -1,12 +1,18 @@
-//UserProfile.jsx
 import React, { useState } from "react";
 import "./UserProfile.css";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import AddImageModal from "../../EditProfileAddTaskModal/AddImageModal";
 import MyProfileService from "../../Services/MyProfileService";
+import { useNavigate } from "react-router-dom";
 
 const UserProfile = ({ user }) => {
-  //Atributos/Estados del perfil de usuario
+  const navigate = useNavigate(); // Declarar el hook dentro del componente
+
+  const handleNavigate = () => {
+    navigate('/login'); // Redirige al login, es de prueba para que funcione pero una vez integrado llevaria al feed
+  };
+
+  // Atributos/Estados del perfil de usuario
   const userBackend = JSON.parse(localStorage.getItem("user"));
   const [followers, setFollowers] = useState(user.followers);
   const [following, setFollowing] = useState(user.following);
@@ -17,7 +23,7 @@ const UserProfile = ({ user }) => {
   const [posts, setPosts] = useState(user.posts);
   const [profilePicture, setProfilePicture] = useState(user.profilePicture);
 
-  //Modales
+  // Modales
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
@@ -26,22 +32,27 @@ const UserProfile = ({ user }) => {
     setBio(updatedUser.bio);
     setUserName(updatedUser.userName);
     setProfilePicture(updatedUser.profilePicture);
-    console.log("user props: "+ JSON.stringify(updatedUser));
-    await MyProfileService.editProfile(updatedUser.userName, updatedUser.name, updatedUser.bio, updatedUser.profilePicture,token);
+    console.log("user props: " + JSON.stringify(updatedUser));
+    const token =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmI1Y2EwZjgwMWJjNDNkYjI3MGQ2MSIsImlhdCI6MTczMTQzNDgzOSwiZXhwIjoxNzM0MDI2ODM5fQ.YOuP4lSIBF-Yo4L-aR2qnBHOkVP5oM_wHThSJJX6RYw"; // token de prueba
+    await MyProfileService.editProfile(
+      updatedUser.userName,
+      updatedUser.name,
+      updatedUser.bio,
+      updatedUser.profilePicture,
+      token
+    );
   };
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmI1Y2EwZjgwMWJjNDNkYjI3MGQ2MSIsImlhdCI6MTczMTQzNDgzOSwiZXhwIjoxNzM0MDI2ODM5fQ.YOuP4lSIBF-Yo4L-aR2qnBHOkVP5oM_wHThSJJX6RYw";//token de prueba
 
-  const onSaveImage = async ({ image, file, caption }) => { //image es para la previsualización el modal y file para guardar la imagen en la bd
-    const newPost = { imageUrl: image }; //Aca el caption no v
+  const onSaveImage = async ({ image, file, caption }) => {
+    const newPost = { imageUrl: image };
     const updatedPosts = [...posts, newPost];
     setPosts(updatedPosts);
     setPostQuantity(updatedPosts.length);
-    console.log("ASI SE VE EL POST"+file);
-    await MyProfileService.postImage(
-      caption,
-      file,
-      token /*userBackend.token*/
-    );
+    console.log("ASI SE VE EL POST " + file);
+    const token =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmI1Y2EwZjgwMWJjNDNkYjI3MGQ2MSIsImlhdCI6MTczMTQzNDgzOSwiZXhwIjoxNzM0MDI2ODM5fQ.YOuP4lSIBF-Yo4L-aR2qnBHOkVP5oM_wHThSJJX6RYw"; // token de prueba
+    await MyProfileService.postImage(caption, file, token);
   };
 
   return (
@@ -67,6 +78,9 @@ const UserProfile = ({ user }) => {
             >
               Add Post
             </button>
+            <button className="goFeed_btn" onClick={handleNavigate}>
+              Go Feed
+            </button>
           </div>
           <div className="profile-stats">
             <p>
@@ -87,7 +101,7 @@ const UserProfile = ({ user }) => {
       </div>
       <div className="profile-gallery">
         {posts.map((post, index) => (
-          <div key={index}> {/*le borre aca la  className="gallery-item" porque tras meter el hotFix no hacia nada*/}
+          <div key={index}>
             <img src={post.imageUrl} alt={`Post ${index}`} className="hotFix" />
             <p>{post.caption}</p>
           </div>
