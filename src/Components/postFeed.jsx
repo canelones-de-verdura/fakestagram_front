@@ -39,19 +39,19 @@ const Post = ({ post, modalSetOpen, commentsArray }) => {
 
   return (
     <>
-      <div className="userInfo">
-        <div className="nomImgContainer">
-          <ProfilePhoto
-            profilePicture={currentPost.user.profilePicture}
-            username={currentPost.user.username}
-          />
-          <p id="nomUsuario">{currentPost.user.username}</p>
-        </div>
-        <button id="optionsButton">
-          <span className="material-symbols-outlined">more_vert</span>
-        </button>
-      </div>
       <div className="imgContainer">
+        <div className="userInfo">
+          <div className="nomImgContainer">
+            <ProfilePhoto
+              profilePicture={currentPost.user.profilePicture}
+              username={currentPost.user.username}
+            />
+            <p id="nomUsuario">{currentPost.user.username}</p>
+          </div>
+          <button id="optionsButton">
+            <span className="material-symbols-outlined">more_vert</span>
+          </button>
+        </div>
         <ImageComponent
           image={`${origin_url}/${currentPost.imageUrl}`}
           alt_text={currentPost.user.userName}
