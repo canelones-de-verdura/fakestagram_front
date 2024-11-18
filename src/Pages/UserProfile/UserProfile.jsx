@@ -9,7 +9,7 @@ const UserProfile = ({ user }) => {
   const navigate = useNavigate(); // Declarar el hook dentro del componente
 
   const handleNavigate = () => {
-    navigate('/login'); // Redirige al login, es de prueba para que funcione pero una vez integrado llevaria al feed
+    navigate('/feed'); // Redirige al feed
   };
 
   // Atributos/Estados del perfil de usuario
