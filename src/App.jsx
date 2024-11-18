@@ -5,6 +5,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Login from './Pages/Login'
 import Register from './Pages/Register'
 import Feed from './Pages/Feed'
+import UserProfile from './Pages/UserProfile'
 
 /* Styles */
 import "./App.css"
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/feed" element={<Feed />} />
+                <Route path="/profile" element={<UserProfile />} />
             </Routes>
         </>
     );
