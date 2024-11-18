@@ -7,6 +7,7 @@ import "./UserProfile.css";
 import ProfileService from "../Services/ProfileService";
 import origin_url from "../Services/Origin";
 import ProfilePhotoInProfile from "../Components/ProfilePhotoInProfile";
+import Sidebar from "../Components/SideBar";
 
 const UserProfile = ({ user }) => {
     const current_user = JSON.parse(localStorage.getItem("user"));
@@ -29,6 +30,16 @@ const UserProfile = ({ user }) => {
         }
 
         getProfile();
+    }, []);
+
+    useEffect(() => {
+      document.body.classList.add("feed-background");
+      document.getElementById("root").classList.add("feed-root");
+
+      return () => {
+        document.body.classList.remove("feed-background");
+        document.getElementById("root").classList.remove("feed-root");
+      };
     }, []);
 
     if (!user_profile)
@@ -75,45 +86,59 @@ const UserProfile = ({ user }) => {
 //
     console.log(user_profile)
     return (
-        <div className="profile-container">
+      <>
+        <div className="feed-root">
+          <Sidebar />
+          <div className="profile-container">
             <div className="profile-header">
-                <ProfilePhotoInProfile username={user_profile.user.username} profilePicture={user_profile.user.profilePicture} />
-                <div className="profile-info">
-                    <div className="profile-username">
-                        <h2>{user_profile.user.username}</h2>
-                        <button
-                            className="edit-profile-btn"
-                            onClick={() => setIsModalOpen(true)}
-                        >
-                            Edit Profile
-                        </button>
-                        <button
-                            className="edit-profile-btn"
-                            onClick={() => setIsImageModalOpen(true)}
-                        >
-                            Add Post
-                        </button>
-                    </div>
-                    <div className="profile-stats">
-                        <p>
-                            <strong>{user_profile.posts.length}</strong> posts
-                        </p>
-                        <p>
-                            <strong>{user_profile.user.friends.length}</strong> friends
-                        </p>
-                    </div>
+              <ProfilePhotoInProfile
+                username={user_profile.user.username}
+                profilePicture={user_profile.user.profilePicture}
+              />
+              <div className="profile-info">
+                <div className="profile-username">
+                  <h2 className="profile-name">{user_profile.user.username}</h2>
+                  <div className="profile-buttons">
+                    <button
+                      className="edit-profile-btn"
+                      onClick={() => setIsModalOpen(true)}
+                    >
+                      Edit Profile
+                    </button>
+                    <button
+                      className="edit-profile-btn"
+                      onClick={() => setIsImageModalOpen(true)}
+                    >
+                      Add Post
+                    </button>
+                  </div>
                 </div>
+                <div className="profile-stats">
+                  <p>
+                    <strong>{user_profile.posts.length}</strong> posts
+                  </p>
+                  <p>
+                    <strong>{user_profile.user.friends.length}</strong> friends
+                  </p>
+                </div>
+              </div>
             </div>
             <div className="profile-gallery">
-                {user_profile.posts.map((post, index) => (
-                    <div key={index}> {/*le borre aca la  className="gallery-item" porque tras meter el hotFix no hacia nada*/}
-                        <img src={`${origin_url}/${post.imageUrl}`} alt={`Post ${index}`} className="hotFix" />
-                        <p>{post.caption}</p>
-                    </div>
-                ))}
+              {user_profile.posts.map((post, index) => (
+                <div key={index}>
+                  {" "}
+                  {/*le borre aca la  className="gallery-item" porque tras meter el hotFix no hacia nada*/}
+                  <img
+                    src={`${origin_url}/${post.imageUrl}`}
+                    alt={`Post ${index}`}
+                    className="hotFix"
+                  />
+                </div>
+              ))}
             </div>
+          </div>
 
-            {/*<EditProfileModal
+          {/*<EditProfileModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 user={{ user_profile.user.name, bio, userName }}
@@ -126,6 +151,7 @@ const UserProfile = ({ user }) => {
                 onSave={onSaveImage}
             />*/}
         </div>
+      </>
     );
 };
 
