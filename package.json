@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "fakestagram_front": "file:",
     "react": "^18.3.1",
     "react-animated-heart": "^0.0.8",
     "react-dom": "^18.3.1",
