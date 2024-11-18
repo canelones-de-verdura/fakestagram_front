@@ -73,7 +73,6 @@ const UserProfile = ({ user }) => {
 //    //    );
 //    //};
 //
-    console.log(user_profile)
     return (
         <div className="profile-container">
             <div className="profile-header">
