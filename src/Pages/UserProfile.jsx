@@ -17,7 +17,7 @@ const UserProfile = ({ user }) => {
         const getProfile = async () => {
             let user_id;
 
-            if (user === undefined)
+            if (!user)
                 user_id = current_user._id;
             else
                 user_id = user._id;
@@ -84,7 +84,6 @@ const UserProfile = ({ user }) => {
 //    //    );
 //    //};
 //
-    console.log(user_profile)
     return (
       <>
         <div className="feed-root">

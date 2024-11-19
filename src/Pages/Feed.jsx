@@ -7,6 +7,7 @@ import origin_url from "../Services/Origin";
 import Sidebar from "../Components/SideBar";
 import PostModal from "../Components/PostModal";
 import ProfilePhoto from "../Components/ProfilePhoto";
+import Modal from "../Components/Modal";
 
 const Feed = () => {
     // User
@@ -20,13 +21,13 @@ const Feed = () => {
 
 
     // Para abrir/cerrar los comentarios
-    const [open, setOpen] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
     const [openWith, setOpenWith] = useState({}); // objeto con id del post + array de ids de comentarios
 
     //Logout
     const handleLogout = () => {
-      localStorage.removeItem("user");
-      navigate("/login");
+        localStorage.removeItem("user");
+        navigate("/login");
     };
 
 
@@ -57,51 +58,52 @@ const Feed = () => {
     }, []);
 
     return (
-      <>
-        <div className="feed-root">
-          <Sidebar />
-          <div className="feedContainer">
-            <div className="feedHeader">
-              <div className="title-feed">Fakestagram</div>
-              <div className="iconos">
-                <span className="material-symbols-outlined">favorite</span>
-                <span className="material-symbols-outlined">add_box</span>
-              </div>
-            </div>
+        <>
+            <div className="feed-root">
+                <Sidebar />
+                <div className="feedContainer">
+                    <div className="feedHeader">
+                        <div className="title-feed">Fakestagram</div>
+                        <div className="iconos">
+                            <span className="material-symbols-outlined">favorite</span>
+                            <span className="material-symbols-outlined">add_box</span>
+                        </div>
+                    </div>
 
-            <div className="postContainer">
-              {posts.map((post, key) => {
-                return (
-                  <Post
-                    key={key}
-                    post={post}
-                    modalSetOpen={setOpen}
-                    commentsArray={setOpenWith}
-                  />
-                );
-              })}
-            </div>
+                    <div className="postContainer">
+                        {posts.map((post, key) => {
+                            return (
+                                <Post
+                                    key={key}
+                                    post={post}
+                                    modalSetOpen={setOpenModal}
+                                    commentsArray={setOpenWith}
+                                />
+                            );
+                        })}
+                    </div>
 
-            <div className="navContainer">
-              <button onClick={handleLogout} className="buttonNav">
-                <span className="imgNav material-symbols-outlined">logout</span>
-              </button>
-              <button onClick={handlerProfile} className="buttonNav">
-                <ProfilePhoto
-                  profilePicture={user.profilePicture}
-                  username={user.username}
-                />
-              </button>
+                    <div className="navContainer">
+                        <button onClick={handleLogout} className="buttonNav">
+                            <span className="imgNav material-symbols-outlined">logout</span>
+                        </button>
+                        <button onClick={handlerProfile} className="buttonNav">
+                            <ProfilePhoto
+                                profilePicture={user.profilePicture}
+                                username={user.username}
+                            />
+                        </button>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <PostModal
-          open={open}
-          setOpen={setOpen}
-          comments={openWith}
-          updateComments={setOpenWith}
-        />
-      </>
+            {openModal === true ?
+                <Modal
+                    onClose={() => setOpenModal(false)}
+                    content={<PostModal comments={openWith} updateComments={setOpenWith} />}
+                /> :
+                <></>
+            }
+        </>
     );
 
 };
