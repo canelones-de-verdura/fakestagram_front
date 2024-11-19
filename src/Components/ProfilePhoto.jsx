@@ -1,6 +1,7 @@
 import profile from "../Assets/profile.jpg";
 import origin_url from "../Services/Origin";
 import "./ProfilePhoto.css"
+import { useNavigate } from "react-router-dom";
 
 const ProfilePhoto = ({profilePicture, username}) => {
     const imageUrl = profilePicture ? `${origin_url}/${profilePicture}` : profile;

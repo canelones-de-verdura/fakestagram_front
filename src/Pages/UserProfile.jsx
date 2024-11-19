@@ -1,4 +1,3 @@
-//UserProfile.jsx
 import React, { useEffect, useState } from "react";
 import "./UserProfile.css";
 //import EditProfileModal from "../EditProfileModal/EditProfileModal";

@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import ImageComponent from "./ImageComponent";
 import origin_url from "../Services/Origin";
@@ -5,6 +6,7 @@ import ProfilePhoto from "./ProfilePhoto";
 import Heart from "react-animated-heart";
 import LikeService from "../Services/LikeService";
 import CommentComponent from "./CommentComponent";
+import { useNavigate } from "react-router-dom";
 
 import "./postFeed.css";
 import MapComment from "../Models/CommentModel";
@@ -12,6 +14,7 @@ import MapComment from "../Models/CommentModel";
 const Post = ({ post, modalSetOpen, commentsArray }) => {
     const user = JSON.parse(localStorage.getItem("user"));
     const [currentPost] = useState(post);
+    const navigate = useNavigate();
     const [liked, setLiked] = useState(
         currentPost.likes && currentPost.likes.some((like) => like === user._id) // verifica si ya se dio el like
     );
@@ -38,55 +41,60 @@ const Post = ({ post, modalSetOpen, commentsArray }) => {
     };
 
     return (
-        <>
-            <div className="userInfo">
-                <div className="nomImgContainer">
-                    <ProfilePhoto
-                        profilePicture={currentPost.user.profilePicture}
-                        username={currentPost.user.username}
-                    />
-                    <p id="nomUsuario">{currentPost.user.username}</p>
-                </div>
-                <button id="optionsButton">
-                    <span className="material-symbols-outlined">more_vert</span>
-                </button>
-            </div>
-            <div className="imgContainer">
-                <ImageComponent
-                    image={`${origin_url}/${currentPost.imageUrl}`}
-                    alt_text={currentPost.user.userName}
+      <>
+        <div className="imgContainer">
+          <div className="userInfo">
+            <div className="nomImgContainer">
+              <button
+                className="buttonNavv"
+                onClick={() => navigate("/profile")}
+              >
+                <ProfilePhoto
+                  profilePicture={user.profilePicture}
+                  username={user.username}
                 />
+                <p id="nomUsuario">{currentPost.user.username}</p>
+              </button>
             </div>
-            <div className="interactionContainer">
-                <div className="likeCommentContainer">
-                    {" "}
-                    <div className="likeContainer">
-                        <Heart
-                            isClick={liked}
-                            onClick={handlerLike}
-                            className="smallHeart"
-                        />
-                    </div>
-                    <span className="material-symbols-outlined" onClick={openComments}>
-                        chat_bubble
-                    </span>
-                </div>
-                <div className="likesCount">
-                    <span>{likesCount} Likes</span>
-                </div>
-                <div className="detailsContainer">
-                    <div className="descriptionContainer">
-                        <p id="nomUsuario">{currentPost.user.username}</p>
-                        <p id="description">{currentPost.caption}</p>
-                    </div>
-                </div>
-                <div className="commentsPreview">
-                    {currentPost.comments.slice(0, 2).map((comment, index) => (
-                        <CommentComponent key={index} comment={comment} />
-                    ))}
-                </div>
+            <button id="optionsButton">
+              <span className="material-symbols-outlined">more_vert</span>
+            </button>
+          </div>
+          <ImageComponent
+            image={`${origin_url}/${currentPost.imageUrl}`}
+            alt_text={currentPost.user.userName}
+          />
+        </div>
+        <div className="interactionContainer">
+          <div className="likeCommentContainer">
+            {" "}
+            <div className="likeContainer">
+              <Heart
+                isClick={liked}
+                onClick={handlerLike}
+                className="smallHeart"
+              />
             </div>
-        </>
+            <span className="material-symbols-outlined" onClick={openComments}>
+              chat_bubble
+            </span>
+          </div>
+          <div className="likesCount">
+            <span>{likesCount} Likes</span>
+          </div>
+          <div className="detailsContainer">
+            <div className="descriptionContainer">
+              <p id="nomUsuario">{currentPost.user.username}</p>
+              <p id="description">{currentPost.caption}</p>
+            </div>
+          </div>
+          <div className="commentsPreview">
+            {currentPost.comments.slice(0, 2).map((comment, index) => (
+              <CommentComponent key={index} comment={comment} />
+            ))}
+          </div>
+        </div>
+      </>
     );
 };
 
