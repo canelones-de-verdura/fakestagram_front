@@ -20,18 +20,32 @@ const Post = ({ post, modalSetOpen, commentsArray }) => {
     );
     const [likesCount, setLikesCount] = useState(
         currentPost.likes ? currentPost.likes.length : 0
-    );
+    );  
+    const [showHeart, setShowHeart] = useState(false);
 
     const handlerLike = async () => {
-        if (liked) {
-            const res = await LikeService.remove_like(post._id, user.token);
-            setLiked(!liked);
-            setLikesCount((prevLikes) => (liked ? prevLikes - 1 : prevLikes + 1));
+      try {
+        if (!liked) {
+          // Dar like
+          await LikeService.like_post(post._id, user.token);
+          setLikesCount((prevLikes) => prevLikes + 1);
         } else {
-            const res = await LikeService.like_post(post._id, user.token);
-            setLiked(!liked);
-            setLikesCount((prevLikes) => (liked ? prevLikes - 1 : prevLikes + 1));
+          // Quitar like
+          await LikeService.remove_like(post._id, user.token);
+          setLikesCount((prevLikes) => prevLikes - 1);
         }
+        setLiked(!liked);
+      } catch (error) {
+        console.error("Error al gestionar el like:", error);
+      }
+    };
+
+    const handleDoubleClick = () => {
+      if (!liked) {
+        handlerLike(); // Si no está likeado, cuenta como like
+      }
+      setShowHeart(true); // Mostrar el corazón animado grande
+      setTimeout(() => setShowHeart(false), 1500); // Ocultar tras 1500 ms
     };
 
     const openComments = () => {
@@ -60,10 +74,18 @@ const Post = ({ post, modalSetOpen, commentsArray }) => {
               <span className="material-symbols-outlined">more_vert</span>
             </button>
           </div>
-          <ImageComponent
-            image={`${origin_url}/${currentPost.imageUrl}`}
-            alt_text={currentPost.user.userName}
-          />
+          {/* Imagen principal del post */}
+          <div className="imageWrapper" onDoubleClick={handleDoubleClick}>
+            <ImageComponent
+              image={`${origin_url}/${currentPost.imageUrl}`}
+              alt_text={currentPost.user.userName}
+            />
+            {showHeart && (
+              <div className="animatedHeartOverlay">
+                <Heart isClick={true} onClick={() => {}} />
+              </div>
+            )}
+          </div>
         </div>
         <div className="interactionContainer">
           <div className="likeCommentContainer">
