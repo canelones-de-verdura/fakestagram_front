@@ -7,6 +7,7 @@
   background-size: cover;
   border-radius: 15px;
 }
+
 body.login-background {
   background-image: url("../Assets/descarga.jpg");
   background-size: cover;
@@ -15,6 +16,7 @@ body.login-background {
   color: white;
   display: flex;
 }
+
 .login-card {
   display: flex;
   flex-direction: column;
