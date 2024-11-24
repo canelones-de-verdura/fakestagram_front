@@ -13,6 +13,7 @@
   font-family: "Inter", sans-serif;
 }
 
+
 .profile-header {
   display: flex;
   align-items: center;
@@ -110,3 +111,4 @@
   display: flex;
   gap: 10px; /* Espacio entre los botones */
 }
+
