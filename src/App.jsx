@@ -5,7 +5,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Login from './Pages/Login'
 import Register from './Pages/Register'
 import Feed from './Pages/Feed'
-import UserProfile from './Pages/UserProfile'
+import UserProfile from './Pages/UserProfile/UserProfile'
 
 /* Styles */
 import "./App.css"

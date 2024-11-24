@@ -3,10 +3,10 @@ import "./UserProfile.css";
 //import EditProfileModal from "../EditProfileModal/EditProfileModal";
 //import AddImageModal from "../../EditProfileAddTaskModal/AddImageModal";
 //import MyProfileService from "../../Services/MyProfileService";
-import ProfileService from "../Services/ProfileService";
-import origin_url from "../Services/Origin";
-import ProfilePhotoInProfile from "../Components/ProfilePhotoInProfile";
-import Sidebar from "../Components/SideBar";
+import ProfileService from "../../Services/ProfileService";
+import origin_url from "../../Services/Origin";
+import ProfilePhotoInProfile from "../../Components/ProfilePhotoInProfile";
+import Sidebar from "../../Components/SideBar";
 
 const UserProfile = ({ user }) => {
     const current_user = JSON.parse(localStorage.getItem("user"));
