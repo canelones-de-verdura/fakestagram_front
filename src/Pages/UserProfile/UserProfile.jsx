@@ -1,3 +1,4 @@
+/*UserProfile.jsx*/ 
 import React, { useState, useEffect } from "react";
 import "./UserProfile.css";
 import EditProfileModal from "../../Components/EditProfileModal/EditProfileModal";
@@ -42,31 +43,48 @@ const UserProfile = () => {
   }, [user.token]);
 
   const handleEditProfile = async (updatedUser) => {
-    setName(updatedUser.name);
-    setBio(updatedUser.bio);
-    setUserName(updatedUser.userName);
-    setProfilePicture(updatedUser.profilePicture);
-    //Chequeo del objeto
-    console.log("user props: " + JSON.stringify(updatedUser));
-    //PARTE DEL BACK
-    await MyProfileService.editProfile(
-      updatedUser.userName,
-      updatedUser.name,
-      updatedUser.bio,
-      updatedUser.profilePicture,
-      user.token
-    );
+    try {
+      // Actualiza el perfil en el backend
+      await MyProfileService.editProfile(
+        updatedUser.userName,
+        updatedUser.name,
+        updatedUser.bio,
+        updatedUser.profilePicture,
+        user.token
+      );
+  
+      // Actualiza los estados locales
+      setName(updatedUser.name);
+      setBio(updatedUser.bio);
+      setUserName(updatedUser.userName);
+      setProfilePicture(updatedUser.profilePicture); // Cambia la imagen de perfil
+  
+      console.log("Perfil actualizado:", updatedUser);
+    } catch (error) {
+      console.error("Error al actualizar el perfil:", error);
+    }
   };
+  
 
   const onSaveImage = async ({ image, file, caption }) => {
     try {
-      const newPost = await PostService.upload_post(file, caption, user.token);
-      setPosts((prevPosts) => [...prevPosts, newPost.data]);
-      setPostQuantity((prevQuantity) => prevQuantity + 1);
+      // Llamada al backend para guardar la imagen y obtener la URL persistente
+      const response = await MyProfileService.postImage(caption, file, user.token);
+  
+      // Supongamos que `response.data` devuelve el nuevo post con la URL del servidor
+      const newPost = response.data;
+  
+      // Actualizar el estado con el post recibido del servidor
+      const updatedPosts = [...posts, newPost];
+      setPosts(updatedPosts);
+      setPostQuantity(updatedPosts.length);
+  
+      console.log("Imagen subida correctamente:", newPost);
     } catch (error) {
-      console.error("Error uploading post:", error);
+      console.error("Error al subir la imagen:", error);
     }
   };
+  
 
   return (
     <div className="profile-container">

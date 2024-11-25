@@ -1,99 +1,101 @@
-/* EditProfileModal.css */
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.65); /* Fondo más oscuro */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Asegura que el modal esté en el frente */
-  }
-  
-  .modal-content {
-    background: #ffffff; /* Fondo blanco */
-    padding: 25px 20px;
-    border-radius: 12px; /* Bordes más redondeados */
-    width: 320px; /* Más estrecho y ajustado */
-    max-width: 90%;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra suave y difusa */
-    text-align: center; /* Centrado de texto */
-    font-family: Arial, sans-serif;
-  }
-  
-  .modal-content h2 {
-    font-size: 18px;
-    font-weight: 600;
-    color: #262626; /* Color de título similar a Instagram */
-    margin-bottom: 15px;
-  }
-  
-  .modal-content label {
-    display: block;
-    font-size: 14px;
-    font-weight: 500;
-    color: #8e8e8e; /* Texto de etiquetas en gris claro */
-    margin: 10px 0 5px;
-  }
-  
-  .modal-content input[type="text"],
-  .modal-content textarea {
-    width: 100%;
-    padding: 8px 10px;
-    border: 1px solid #dbdbdb; /* Borde gris claro */
-    border-radius: 5px;
-    font-size: 14px;
-    color: #262626;
-    background-color: #fafafa;
-    outline: none;
-    transition: border-color 0.2s;
-    box-sizing: border-box;
-  }
-  
-  .modal-content input[type="text"]:focus,
-  .modal-content textarea:focus {
-    border-color: #a8a8a8; /* Cambia el borde al enfocar */
-  }
-  
-  .modal-content textarea {
-    resize: none; /* Evita el redimensionamiento */
-    height: 60px;
-    box-sizing: border-box;
-  }
-  
-  .modal-content button {
-    font-size: 14px;
-    font-weight: 600;
-    color: white;
-    background-color: #0095f6; /* Color azul Instagram */
-    border: none;
-    border-radius: 8px;
-    padding: 10px;
-    width: 100%;
-    margin-top: 15px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .modal-content button:hover {
-    background-color: #007bbf; /* Azul más oscuro al pasar el cursor */
-  }
-  
-  .modal-content button[type="button"] {
-    background-color: transparent;
-    color: #262626;
-    margin-top: 10px;
-  }
-  
-  .modal-content button[type="button"]:hover {
-    background-color: rgba(0, 0, 0, 0.05); /* Fondo claro al pasar el cursor */
-  }
-  
-  .image-preview {
-    max-width: 100%;
-    max-height: 300px; /* Puedes ajustar esta altura máxima */
-    margin-top: 10px;
-    object-fit: cover;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.65); /* Fondo oscuro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: auto; /* Permite desplazamiento si el contenido es muy alto */
+}
+
+.modal-content {
+  background: #ffffff;
+  padding: 25px 20px;
+  border-radius: 12px;
+  width: 320px; /* Ancho ajustado */
+  max-width: 90%;
+  max-height: 90%; /* Limita la altura máxima */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  font-family: Arial, sans-serif;
+  overflow-y: auto; /* Habilita el scroll vertical dentro del modal */
+}
+
+.modal-content h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #262626; /* Color de título similar a Instagram */
+  margin-bottom: 15px;
+}
+
+.modal-content label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #8e8e8e; /* Texto de etiquetas en gris claro */
+  margin: 10px 0 5px;
+}
+
+.modal-content input[type="text"],
+.modal-content img {
+  max-width: 100%;
+  max-height: 200px; /* Ajusta según necesidad */
+  object-fit: cover;
+}
+
+.modal-content textarea {
+  resize: none;
+  height: 80px;
+  overflow-y: auto; /* Scroll si el texto excede el área */
+}
+
+.modal-content input[type="text"]:focus,
+.modal-content textarea:focus {
+  border-color: #a8a8a8; /* Cambia el borde al enfocar */
+}
+
+.modal-content textarea {
+  resize: none; /* Evita el redimensionamiento */
+  height: 60px;
+  box-sizing: border-box;
+}
+
+.modal-content button {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  background-color: #0095f6; /* Color azul Instagram */
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.modal-content button:hover {
+  background-color: #007bbf; /* Azul más oscuro al pasar el cursor */
+}
+
+.modal-content button[type="button"] {
+  background-color: transparent;
+  color: #262626;
+  margin-top: 10px;
+}
+
+.modal-content button[type="button"]:hover {
+  background-color: rgba(0, 0, 0, 0.05); /* Fondo claro al pasar el cursor */
+}
+
+.image-preview {
+  max-width: 100%;
+  max-height: 300px; /* Puedes ajustar esta altura máxima */
+  margin-top: 10px;
+  object-fit: cover;
+}
+

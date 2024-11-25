@@ -4,7 +4,7 @@ import "./ProfilePhoto.css"
 import { useNavigate } from "react-router-dom";
 
 const ProfilePhoto = ({profilePicture, username}) => {
-    const imageUrl = profilePicture ? `${origin_url}/${profilePicture}` : profile;
+    const imageUrl = profilePicture ? `${profilePicture}` : profile;
 
     return (
       <div className="profilePhotoContainer">

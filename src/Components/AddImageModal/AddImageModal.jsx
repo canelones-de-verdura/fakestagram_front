@@ -1,27 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./AddImage.css";
 
 const AddImageModal = ({ isOpen, onClose, onSave }) => {
   const [image, setImage] = useState(null);
   const [caption, setCaption] = useState("");
   const [file, setFile] = useState();
-  if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSave({image, file, caption }); // Llama a onSave para guardar la imagen y el comentario (el comentario igual no lo muestro)
-    onClose();
-  };
+  useEffect(() => {
+    if (!isOpen) {
+      // Limpiar los estados cuando el modal se cierra (no funciona bien)
+      setImage(null);
+      setCaption("");
+      setFile(null);
+    }
+  }, [isOpen]);
 
   const handleImageChange = (e) => {
     const fileToUpload = e.target.files[0];
     if (fileToUpload) {
       setFile(fileToUpload);
-      console.log("IMAGEN DEL POST: ")
-      console.log(fileToUpload);
       setImage(URL.createObjectURL(fileToUpload)); // Genera una URL temporal para previsualizar
     }
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSave({ image, file, caption });
+    onClose();
+  };
+
+  if (!isOpen) return null;
 
   return (
     <div className="modal-overlay">
