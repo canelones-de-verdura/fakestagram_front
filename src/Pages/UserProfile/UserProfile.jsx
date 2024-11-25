@@ -5,6 +5,7 @@ import AddImageModal from "../../Components/AddImageModal/AddImageModal";
 import PostService from "../../Services/PostService";
 import profileImageDefault from "../../Assets/profile.jpg";
 import MyProfileService from "../../Services/MyProfileService";
+import Sidebar from "../../Components/SideBar";
 
 const UserProfile = () => {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -69,6 +70,7 @@ const UserProfile = () => {
 
   return (
     <div className="profile-container">
+      <Sidebar></Sidebar>
       <div className="profile-header">
         <img
           className="profile-pic"
@@ -112,11 +114,11 @@ const UserProfile = () => {
 
       <div className="profile-gallery">
         {posts.map((post) => (
-          <div key={post._id} className="post-item">
+          <div key={post._id}>
             <img
               src={`http://localhost:3001/${post.imageUrl.replace("\\", "/")}`}
               alt={post.caption || "Post"}
-              className="post-image"
+              className="hotFix"
             />
           </div>
         ))}
