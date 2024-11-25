@@ -52,18 +52,29 @@ const UserProfile = () => {
         updatedUser.profilePicture,
         user.token
       );
-  
+    
       // Actualiza los estados locales
       setName(updatedUser.name);
       setBio(updatedUser.bio);
       setUserName(updatedUser.userName);
       setProfilePicture(updatedUser.profilePicture); // Cambia la imagen de perfil
   
+      // Actualiza el localStorage con los nuevos datos del perfil (esto es para arreglar el problema de que los cambios que hechos en el front-end (como editar el perfil de usuario) no se guardan en el localStorage, por lo que cuando recargamos la página, la información vuelve a ser la que está almacenada en el localStorage y no la que modificamos temporalmente en el front-end, porque hasta no logearnos de nuevo el local storage no se actualiza.
+      const updatedUserForStorage = {
+        ...user,
+        name: updatedUser.name,
+        bio: updatedUser.bio,
+        userName: updatedUser.userName,
+        profilePicture: updatedUser.profilePicture,
+      };
+      localStorage.setItem("user", JSON.stringify(updatedUserForStorage)); // Actualiza el localStorage
+  
       console.log("Perfil actualizado:", updatedUser);
     } catch (error) {
       console.error("Error al actualizar el perfil:", error);
     }
   };
+  
   
 
   const onSaveImage = async ({ image, file, caption }) => {
