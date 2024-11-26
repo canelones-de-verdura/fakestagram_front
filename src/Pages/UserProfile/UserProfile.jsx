@@ -82,11 +82,11 @@ const UserProfile = () => {
       // Llamada al backend para guardar la imagen y obtener la URL persistente
       const response = await MyProfileService.postImage(caption, file, user.token);
   
-      // Supongamos que `response.data` devuelve el nuevo post con la URL del servidor
-      const newPost = response.data;
+      
+      const newPost = response.data;//Este es el nuevo post que acabamos de subir
   
-      // Actualizar el estado con el post recibido del servidor
-      const updatedPosts = [...posts, newPost];
+      // Actualizamos las imagenes del usuario en el front (las re-desplegamos)
+      const updatedPosts = [newPost, ...posts];
       setPosts(updatedPosts);
       setPostQuantity(updatedPosts.length);
   
@@ -103,7 +103,7 @@ const UserProfile = () => {
       <div className="profile-header">
         <img
           className="profile-pic"
-          src={profilePicture}
+          src={profilePicture ? `${profilePicture}` : profileImageDefault}
           alt={`${userName}'s profile`}
         />
         <div className="profile-info">
@@ -156,7 +156,7 @@ const UserProfile = () => {
       <EditProfileModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        user={{ name, bio, userName }}
+        user={{ name, bio, userName, profilePicture }}
         onSave={handleEditProfile}
       />
 
