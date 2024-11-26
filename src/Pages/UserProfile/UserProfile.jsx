@@ -143,11 +143,10 @@ const UserProfile = () => {
 
       <div className="profile-gallery">
         {posts.map((post) => (
-          <div key={post._id}>
+          <div key={post._id} className="hotFix">
             <img
               src={`http://localhost:3001/${post.imageUrl.replace("\\", "/")}`}
               alt={post.caption || "Post"}
-              className="hotFix"
             />
           </div>
         ))}

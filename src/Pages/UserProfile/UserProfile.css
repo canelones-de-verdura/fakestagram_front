@@ -79,9 +79,8 @@
     font-family: 'Inter';
   }
   .hotFix{
-    width: 360px;
-    width: 255px;
-    object-fit: cover;
+    width: 255x;
+    height: 340px;
   }
 
   img {
