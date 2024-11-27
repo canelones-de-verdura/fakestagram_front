@@ -9,7 +9,7 @@ const Notifications = ({ modalOpen, toggleModal }) => {
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
-        const user = JSON.parse(localStorage.getItem("user")); // Asegúrate de guardar el token y _id
+        const user = JSON.parse(localStorage.getItem("user")); 
         const data = await NotificationService.getUserNotifications(user.token);
         setNotifications(data);
       } catch (error) {
