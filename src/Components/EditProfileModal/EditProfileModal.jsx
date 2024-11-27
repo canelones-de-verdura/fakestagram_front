@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './EditProfileModal.css';
 
 const EditProfileModal = ({ isOpen, onClose, user, onSave }) => {
-  console.log(user);
   const [name, setName] = useState(user.name);
   const [bio, setBio] = useState(user.bio);
   const [userName, setUserName] = useState(user.userName);

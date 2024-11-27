@@ -14,11 +14,9 @@ const UserProfile = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const location = useLocation();
   const {user_id} = location.state || {};
-    console.log(user_id)
 
   // Atributos/Estados del perfil de usuario
-  const [followers, setFollowers] = useState(user.followers || 3);
-  const [following, setFollowing] = useState(user.following || 2);
+  const [following, setFollowing] = useState();
   const [name, setName] = useState();
   const [bio, setBio] = useState();
   const [userName, setUserName] = useState();
@@ -34,7 +32,6 @@ const UserProfile = () => {
     const fetchPosts = async () => {
       try {
         const response = await ProfileService.get_profile(user_id, user.token);
-        console.log(response);
         // Aquí accedemos correctamente a los posts en `response.data`
         setPosts(response.data.posts);
         setPostQuantity(response.data.posts.length);
@@ -42,8 +39,8 @@ const UserProfile = () => {
         setProfilePicture(response.data.user.profilePicture || profileImageDefault)
         setBio(response.data.user.description)
         setUserName(response.data.user.username);
+        setFollowing(response.data.user.friends.length)
       } catch (error) {
-        console.log("TOKEN: " + user.token);
         console.error("Error fetching posts:", error);
       }
     };
@@ -137,10 +134,7 @@ const UserProfile = () => {
               <strong>{postQuantity}</strong> posts
             </p>
             <p>
-              <strong>{followers}</strong> followers
-            </p>
-            <p>
-              <strong>{following}</strong> following
+              <strong>{following}</strong> friends
             </p>
           </div>
           <div className="profile-bio">
