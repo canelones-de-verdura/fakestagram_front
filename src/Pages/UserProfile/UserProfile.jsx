@@ -7,17 +7,22 @@ import PostService from "../../Services/PostService";
 import profileImageDefault from "../../Assets/profile.jpg";
 import MyProfileService from "../../Services/MyProfileService";
 import Sidebar from "../../Components/SideBar";
+import { useLocation } from "react-router-dom";
+import ProfileService from "../../Services/ProfileService";
 
 const UserProfile = () => {
   const user = JSON.parse(localStorage.getItem("user"));
+  const location = useLocation();
+  const {user_id} = location.state || {};
+    console.log(user_id)
 
   // Atributos/Estados del perfil de usuario
   const [followers, setFollowers] = useState(user.followers || 3);
   const [following, setFollowing] = useState(user.following || 2);
-  const [name, setName] = useState(user.name);
-  const [bio, setBio] = useState(user.bio);
-  const [userName, setUserName] = useState(user.username);
-  const [profilePicture, setProfilePicture] = useState(user.profilePicture || profileImageDefault);
+  const [name, setName] = useState();
+  const [bio, setBio] = useState();
+  const [userName, setUserName] = useState();
+  const [profilePicture, setProfilePicture] = useState();
   const [posts, setPosts] = useState([]);
   const [postQuantity, setPostQuantity] = useState(0);
 
@@ -28,11 +33,15 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await PostService.get_feed(user.token);
+        const response = await ProfileService.get_profile(user_id, user.token);
         console.log(response);
         // Aquí accedemos correctamente a los posts en `response.data`
-        setPosts(response.data);
-        setPostQuantity(response.data.length);
+        setPosts(response.data.posts);
+        setPostQuantity(response.data.posts.length);
+        setName(response.data.user.name)
+        setProfilePicture(response.data.user.profilePicture || profileImageDefault)
+        setBio(response.data.user.description)
+        setUserName(response.data.user.username);
       } catch (error) {
         console.log("TOKEN: " + user.token);
         console.error("Error fetching posts:", error);
@@ -40,7 +49,7 @@ const UserProfile = () => {
     };
 
     fetchPosts();
-  }, [user.token]);
+  }, [user_id]);
 
   const handleEditProfile = async (updatedUser) => {
     try {
@@ -109,18 +118,18 @@ const UserProfile = () => {
         <div className="profile-info">
           <div className="profile-username">
             <h2>{userName}</h2>
-            <button
+            {(user._id === user_id) ? <button
               className="edit-profile-btn"
               onClick={() => setIsModalOpen(true)}
             >
               Edit Profile
-            </button>
-            <button
+            </button>: <></>}
+            {(user._id === user_id) ?<button
               className="edit-profile-btn"
               onClick={() => setIsImageModalOpen(true)}
             >
               Add Post
-            </button>
+            </button> : <></>}
           </div>
 
           <div className="profile-stats">
