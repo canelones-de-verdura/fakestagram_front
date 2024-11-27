@@ -83,7 +83,6 @@ h2 {
 }
 
 .imgContainer {
-    position: relative  ;
     view-timeline-name: --image;
     view-timeline-axis: block;
 
