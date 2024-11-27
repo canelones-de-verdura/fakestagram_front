@@ -61,11 +61,11 @@ const Post = ({ post, modalSetOpen, commentsArray }) => {
             <div className="nomImgContainer">
               <button
                 className="buttonNavv"
-                onClick={() => navigate("/profile")}
+                onClick={() =>  navigate("/profile", { state: { user_id: currentPost.user._id }}) }
               >
                 <ProfilePhoto
-                  profilePicture={user.profilePicture}
-                  username={user.username}
+                  profilePicture={currentPost.user.profilePicture}
+                  username={currentPost.user.username}
                 />
                 <p id="nomUsuario">{currentPost.user.username}</p>
               </button>

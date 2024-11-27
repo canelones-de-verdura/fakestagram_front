@@ -9,10 +9,10 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false); // Estado centralizado para el modal
 
-  const handleLogout = () => {
-    localStorage.removeItem("user"); // Eliminar el usuario del localStorage
-    navigate("/login"); // Redirigir al login
-  };
+    const handleLogout = () => {
+        localStorage.removeItem("user"); // Eliminar el usuario del localStorage
+        navigate("/login"); // Redirigir al login
+    };
 
   const toggleModal = () => {
     setModalOpen(!modalOpen); // Cambiar el estado del modal
@@ -29,7 +29,9 @@ const Sidebar = () => {
         <span className="material-symbols-outlined">notifications</span>
         <span>Notifications</span>
       </button>
-      <button className="buttonNavv" onClick={() => navigate("/profile")}>
+      <button className="buttonNavv" onClick={
+        () => navigate("/profile", { state: { user_id: user._id } })
+      }>
         <ProfilePhoto
           profilePicture={user.profilePicture}
           username={user.username}
