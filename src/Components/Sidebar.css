@@ -41,3 +41,9 @@
   margin-top: auto;
   color: red;
 }
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
