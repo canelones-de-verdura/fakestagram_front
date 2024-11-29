@@ -1,8 +1,9 @@
-# Por hacer  
+# Para levantar la página
 
- - agregar PUT en ProfileService - Eze
- - perfil - Ger
- - mostrar imágenes completas en modal (otro- distinto del de los comentatios) - Eze
+ - La página espera el backend en localhost:3001  
 
-
- - hacer mobile - todos
+```
+$ git clone https://github.com/canelones-de-verdura/fakestagram_front
+$ cd fakestagram_front && npm install
+$ npm run dev
+```  
