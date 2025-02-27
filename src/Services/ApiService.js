@@ -1,4 +1,6 @@
-const default_url = "http://localhost:3001/api";
+import origin_url from "./Origin";
+
+const default_url = `${origin_url}/api`;
 
 const ApiService = {
     get: async (resource, token) => {
@@ -11,7 +13,7 @@ const ApiService = {
 
         const api_response = await fetch(`${default_url}/${resource}`, request);
 
-        console.log(`POST: ${api_response.status}, ${api_response.statusText}`);
+        console.log(`GET: ${api_response.status}, ${api_response.statusText}`);
 
         const response = { code: api_response.status, data: null };
 
@@ -30,7 +32,7 @@ const ApiService = {
                 "Content-Type": `${content_type}`,
             },
         };
-
+        console.log(`${default_url}/${resource}`);
         const api_response = await fetch(`${default_url}/${resource}`, request);
 
         console.log(`POST: ${api_response.status}, ${api_response.statusText}`);
@@ -42,6 +44,49 @@ const ApiService = {
 
         return response;
     },
+
+    delete: async (resource, token) => {
+        const request = {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer: ${token}`,
+            },
+        };
+
+        const api_response = await fetch(`${default_url}/${resource}`, request);
+
+        console.log(`DELETE: ${api_response.status}, ${api_response.statusText}`);
+
+        const response = { code: api_response.status, data: null };
+
+        if (api_response.ok)
+            response.data = await api_response.json();
+
+        return response;
+    },
+    
+    put: async (resource, data, token) => {
+        const request = {
+            method: "PUT",
+            body: JSON.stringify(data),
+            headers: {
+                "Authorization": `Bearer: ${token}`,
+                "Content-Type": "application/json",
+            },
+        };
+
+        const api_response = await fetch(`${default_url}/${resource}`, request);
+
+        console.log(`PUT: ${api_response.status}, ${api_response.statusText}`);
+
+        const response = { code: api_response.status, data: null };
+
+        if (api_response.ok)
+            response.data = await api_response.json();
+
+        return response;
+    },
+
 };
 
 export default ApiService;

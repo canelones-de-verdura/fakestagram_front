@@ -25,28 +25,6 @@ const PostService = {
 
         return res;
     },
-
-    comment_post: async (comment, post_id, token) => {
-        const res = await ApiService.post(
-            `posts/${post_id}/comments`,
-            comment,
-            "application/json",
-            token
-        );
-
-        return res;
-    },
-
-    like_post: async (post_id, token) => {
-        const res = await ApiService.post(
-            `posts/${post_id}/comments`,
-            null,
-            null,
-            token
-        );
-
-        return res;
-    },
 };
 
 export default PostService;

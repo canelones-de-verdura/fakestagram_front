@@ -1,20 +1,22 @@
-#root {
+.login-root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  background-image: url("../Assets/fonddo.jpg");
   background-size: cover;
   border-radius: 15px;
 }
-:root {
+
+body.login-background {
   background-image: url("../Assets/descarga.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   color: white;
+  display: flex;
 }
+
 .login-card {
   display: flex;
   flex-direction: column;
@@ -91,3 +93,4 @@
   background: #134e4eaa;
   filter: drop-shadow(0 0 2em #134e4e);
 }
+

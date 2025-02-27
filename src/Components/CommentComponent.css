@@ -1,0 +1,16 @@
+.comment {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 2px;
+    height: 30px;
+    overflow-y: hidden;
+}
+
+.comment img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}

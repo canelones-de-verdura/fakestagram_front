@@ -1,0 +1,9 @@
+.list {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    overflow-y: auto;
+    scrollbar-width: none;
+    max-height: 300px;
+}

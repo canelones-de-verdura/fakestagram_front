@@ -1,0 +1,135 @@
+.userInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 7px;
+  padding-right: 16px;
+  height: 39px;
+}
+
+.userInfo img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.nomImgContainer {
+  height: 100%;
+  display: flex;
+  gap: 5px;
+  width: 100%;
+}
+
+#optionsButton {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  align-items: center;
+}
+
+#nomUsuario {
+  margin: 0;
+  color: black;
+  line-height: 34px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.material-symbols-outlined {
+  height: 19px;
+  cursor: pointer;
+}
+
+.descriptionContainer {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 8px;
+}
+
+#description {
+  color: black;
+  font-size: 14px;
+}
+
+.interactionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 1px solid #ddd;
+}
+
+.likeContainer {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  width: 70px;
+  margin-left: -28px;
+}
+
+.go4268192979 {
+  transform: scale(0.6);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.go2484888251 {
+  transform: scale(0.7);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.likesCount {
+  font-size: 14px;
+  font-weight: bold;
+  height: 10px;
+  padding-left: 7px;
+}
+
+.commentsPreview {
+  margin-top: 8px;
+  width: 100%;
+  padding-left: 7px;
+}
+
+.likeContainer {
+  display: flex;
+  align-items: center;
+}
+
+.likeCommentContainer {
+  display: flex;
+  align-items: center;
+}
+
+.detailsContainer {
+  height: 40px;
+  padding-left: 7px;
+}
+
+.comment {
+  font-size: 14px;
+}
+
+
+.animatedHeartOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  animation: fadeOut 2.5s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(3);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(3.5);
+  }
+}

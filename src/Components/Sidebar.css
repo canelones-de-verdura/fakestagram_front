@@ -1,0 +1,49 @@
+.sidebar {
+  width: 250px;
+  background-color: #fff;
+  padding: 20px;
+  border-right: 1px solid #dbdbdb;
+  position: fixed;
+  height: 96vh;
+  left: 0%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 9;
+}
+
+.sidebar__logo {
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.buttonNavv {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 8px 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.imgNav {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.logoutButton {
+  margin-top: auto;
+  color: red;
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}

@@ -1,12 +1,11 @@
 /* Functions */
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 
 /* Pages */
 import Login from './Pages/Login'
 import Register from './Pages/Register'
-
-/* Contexts */
-import { SessionContextManager } from './Contexts/SessionContext'
+import Feed from './Pages/Feed'
+import UserProfile from './Pages/UserProfile/UserProfile'
 
 /* Styles */
 import "./App.css"
@@ -14,14 +13,19 @@ import "./App.css"
 function App() {
     return (
         <>
-            <SessionContextManager>
-                <Routes>
-                    <Route path={"/login"} element={<Login />} />
-                    <Route path={"/register"} element={<Register />} />
-                </Routes>
-            </SessionContextManager>
+            <Routes>
+                <Route path="/"
+                    element={
+                        localStorage.getItem("user") === null ? <Navigate to="/login" /> : <Navigate to={"/feed"} />
+                    }
+                />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/feed" element={<Feed />} />
+                <Route path="/profile" element={<UserProfile user={null}/>} />
+            </Routes>
         </>
-    )
+    );
 }
 
 export default App
